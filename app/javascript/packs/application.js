@@ -17,6 +17,7 @@ import "../stylesheets/application";
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+// disable turbolink preview if you don't want script loaded in preview mode
 document.addEventListener("turbolinks:before-visit", function() {
   Turbolinks.clearCache();
 })
