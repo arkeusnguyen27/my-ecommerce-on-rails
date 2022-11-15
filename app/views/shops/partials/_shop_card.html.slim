@@ -1,0 +1,5 @@
+.card-wrapper
+  .title
+    = link_to shop[:name], shop_path(shop[:id])
+  img.banner src= shop[:banner_url]
+  .description = shop[:description]

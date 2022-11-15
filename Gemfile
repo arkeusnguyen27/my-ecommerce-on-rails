@@ -5,6 +5,8 @@ ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.0.6'
+gem 'slim'
+gem "slim-rails"
 gem 'pg', '1.4.3'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
@@ -28,6 +30,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
+  gem 'pry', '~> 0.13.1'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
