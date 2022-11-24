@@ -2,18 +2,18 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: khoadam
+  username: <%= ENV.fetch("DB_USER") %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
-  database: ecommerce_development
-
+  database: <%= ENV.fetch("DEV_DB_NAME") %>
 test:
   <<: *default
-  database: ecommerce_test
+  database: <%= ENV.fetch("TEST_DB_NAME") %>
 
 production:
   <<: *default
-  database: ecommerce_production
+  database: <%= ENV.fetch("PRODUCTION_DB_NAME") %>
+

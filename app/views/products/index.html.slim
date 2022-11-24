@@ -1,5 +1,24 @@
+h1 Listing products
 
-h1 List of products from shops
+table
+  thead
+    tr
+      th Title
+      th Shop
+      th
+      th
+      th
 
-- @products.each do |prod|
-  = render "products/partials/product_card", { product: prod, shop_id: prod[:shop_id] }
+  tbody
+    - @products.each do |product|
+      tr
+        td = product.title
+        td = product.shop.name
+        td = link_to "Show", product
+        - if current_user.present? && current_user.shop == product.shop
+          td = link_to "Edit", edit_product_path(product)
+          td = link_to "Destroy", product, data: {confirm: "Are you sure?"}, method: :delete
+
+br
+
+= link_to "New Product", new_product_path

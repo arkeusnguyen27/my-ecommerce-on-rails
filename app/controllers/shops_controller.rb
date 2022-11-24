@@ -6,14 +6,11 @@ class ShopsController < ApplicationController
 
   def show
     @shop = shop_params or not_found
-    @products = get_products.values.select {|product| product[:shop_id] == @shop[:id]}
   end
 
   def update
   end
 
-  def pricing
-  end
 
 
   private
