@@ -1,0 +1,4 @@
+.sidebar#mySidebar
+  a.closebtn href="javascript:void(0)"  onclick='closeNav()' X
+  - paths.each do |path|
+    = link_to path[:name], dashboard_view_dashboard_index_path(view_param: path[:path])

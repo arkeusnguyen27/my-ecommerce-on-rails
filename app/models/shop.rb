@@ -3,4 +3,9 @@ class Shop < ApplicationRecord
   has_many :products
 
   alias owner user
+
+
+  def to_s
+    name || "Shop id #{id}"
+  end
 end

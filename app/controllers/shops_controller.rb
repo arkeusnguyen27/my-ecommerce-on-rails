@@ -1,11 +1,12 @@
 class ShopsController < ApplicationController
 
   def index
-    @shops = get_shops.values
+    @shops = Shop.all
   end
 
   def show
     @shop = shop_params or not_found
+    @products = @shop.products
   end
 
   def update
@@ -16,6 +17,6 @@ class ShopsController < ApplicationController
   private
   def shop_params
     shop_id = params[:shop_id].to_i
-    get_shops[shop_id]
+    Shop.find_by(id: shop_id)
   end
 end

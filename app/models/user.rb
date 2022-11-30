@@ -5,4 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :shop
+
+  def buyer?
+    role == 'buyer'
+  end
+
+  def seller?
+    role == 'seller'
+  end
 end

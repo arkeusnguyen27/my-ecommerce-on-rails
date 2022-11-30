@@ -7,4 +7,4 @@
 .products-section
   h1 Products list
   - @products.each do |prod|
-    = render "/products/partials/product_card", { product: prod, shop_id: @shop[:id] }
+    = render "products/partials/product_card", { product: prod, shop_id: @shop[:id] }
