@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  resources :products
+
 
   resources :dashboard, only: [:index] do
     collection do
@@ -14,15 +14,8 @@ Rails.application.routes.draw do
   get "/pricing", to: "home#pricing"
 
 
-  # shops
-  get "/shops", to: "shops#index", as: :shops
-  get "/shops/:shop_id", to: "shops#show", as: :shop
-  # shops / products
-
-  # buyers dashboard
-
-  # sellers dashboard
-
-  # admin dashboard
+  resources :shops, only: [:show, :index] do
+    resources :products, only: [:show, :index, :edit, :update]
+  end
 
 end

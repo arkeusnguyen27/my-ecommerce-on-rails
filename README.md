@@ -5,17 +5,17 @@
 ## Admins/Owners
 
 ## Users
-- Should be able to register/login/logout account
+~~- Should be able to register/login/logout account
 - user chooses a role ['buyer', 'seller']
     - create account
-    - if register as a seller => we automatically create a shop for seller (with default info)
+    - if register as a seller => we automatically create a shop for seller (with default info)~~
 
 ## Sellers
-- Dashboard
+- ~~Dashboard~~
 - ~~Should be able to create product to sell (prices, images, title, body)~~
 - Should be able to list products on their own shop page.
   - setting page: allow seller to select listing products 
-  - Create shop page => shows [shop's products, reviews]
+  - Create shop page => shows [~~shop's products~~, reviews]
 - Should be able to set product status (selling, pending, draft, archive)
   - Should be to see orders (related to his products only) - how much $, quantity, price
 - Have some statistics for each product (stock, sold,  rev ) - in a specific time range
@@ -30,8 +30,7 @@
 
 
 ## Reviews
+- Buyers who purchased products can leave reviews for them.
+- Extra: allow sellers to showcase some reviews on their homepage
 
 
-- user chooses a role ['buyer', 'seller']
-  - create account 
-  - if register as a seller => we automatically create a shop for seller (with default info)

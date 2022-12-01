@@ -4,4 +4,4 @@ h2 Seller Products
 
 
 = current_user.shop.products.each do |product|
-  = render 'products/partials/product_card', {product: product}
+  = render 'products/partials/product_card', { shop: current_user.shop, product: product}

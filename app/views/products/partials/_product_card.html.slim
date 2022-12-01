@@ -1,4 +1,4 @@
 .card-wrapper
   .title
-    = link_to product.title, product_path(product[:id])
+    = link_to product.title, shop_product_path(shop, product)
   .description == product.description

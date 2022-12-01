@@ -16,7 +16,6 @@ class ShopsController < ApplicationController
 
   private
   def shop_params
-    shop_id = params[:shop_id].to_i
-    Shop.find_by(id: shop_id)
+    Shop.friendly.find(params[:id])
   end
 end
