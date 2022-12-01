@@ -18,4 +18,5 @@ Rails.application.routes.draw do
     resources :products, only: [:show, :index, :edit, :update]
   end
 
+  put '/api/toggle_featured_products', to: "dashboard#toggle_featured_products"
 end

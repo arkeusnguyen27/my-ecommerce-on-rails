@@ -14,7 +14,7 @@
 - ~~Dashboard~~
 - ~~Should be able to create product to sell (prices, images, title, body)~~
 - Should be able to list products on their own shop page.
-  - setting page: allow seller to select listing products 
+  - setting page: allow seller to select listing products
   - Create shop page => shows [~~shop's products~~, reviews]
 - Should be able to set product status (selling, pending, draft, archive)
   - Should be to see orders (related to his products only) - how much $, quantity, price
@@ -33,4 +33,7 @@
 - Buyers who purchased products can leave reviews for them.
 - Extra: allow sellers to showcase some reviews on their homepage
 
-
+## Restful route
+~~- /shops~~
+- /shops/:shop_slug/products
+~~- /shops/:shop_slug/products/:product_slug~~

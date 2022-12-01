@@ -6,7 +6,7 @@ class ShopsController < ApplicationController
 
   def show
     @shop = shop_params or not_found
-    @products = @shop.products
+    @products = @shop.products.where(featured: true)
   end
 
   def update

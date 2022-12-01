@@ -1,7 +1,27 @@
+= javascript_pack_tag 'dashboard/seller_update_featured_products'
+
+
+
 button.openbtn onclick='openNav()'
 | ☰ Open Sidebar
 h2 Seller Products
 
-
-= current_user.shop.products.each do |product|
-  = render 'products/partials/product_card', { shop: current_user.shop, product: product}
+table.table
+  thead
+    tr
+      th scope='col' #
+      th scope='col' title
+      th scope='col'
+      th scope='col'
+      th scope='col'
+        button type='button' onclick='update_featured_products()'
+          | Featured Products
+  tbody
+    - current_user.shop.products.each do |product|
+      tr
+        th scope='row' = product.id
+        th = product.title
+        th Edit
+        th Remove
+        th
+          input type='checkbox' id="product_featured_checkbox_#{product.id}" onclick="handleCheckbox(#{product.id})" checked=product.featured

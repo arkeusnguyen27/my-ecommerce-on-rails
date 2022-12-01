@@ -3,7 +3,8 @@ class Shop < ApplicationRecord
   friendly_id :name, use: :slugged
 
   belongs_to :user
-  has_many :products
+  has_many :products, -> {order('created_at desc')}
+  has_one :shop_setting
 
   alias owner user
 
@@ -11,4 +12,6 @@ class Shop < ApplicationRecord
   def to_s
     name || "Shop id #{id}"
   end
+
+
 end
