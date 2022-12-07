@@ -1,0 +1,19 @@
+| Search page
+
+.search-input
+  = search_form_for @q, url: search_path do |f|
+    = f.label :search_by_title
+    = f.search_field :title_cont
+
+    = f.label :filter_by_price_less_than
+    = f.search_field :price_lt
+
+
+    = f.submit
+
+
+= sort_link(@q, :price, "Price", default_order: :asc)
+
+.cards
+  - @products.each do |product|
+    .product-card = render 'products/partials/product_card', product: product, shop: product.shop

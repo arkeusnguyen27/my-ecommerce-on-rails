@@ -4,5 +4,7 @@
   .title
     = link_to product.title, shop_product_path(shop, product)
   .description == product.description
-
+  .price
+    | $
+    =< product.price
 

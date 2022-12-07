@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "/about-us", to: "home#about_us"
   get "/apps", to: "home#apps"
   get "/pricing", to: "home#pricing"
+  get "/search", to: "home#search"
 
 
   resources :shops, only: [:show, :index] do

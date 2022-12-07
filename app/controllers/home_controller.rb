@@ -12,6 +12,10 @@ class HomeController < ApplicationController
   def pricing
   end
 
+  def search
+    @q = Product.public_products.ransack(params[:q])
+    @products = @q.result(distinct: true)
+  end
 
   private
   def home_params

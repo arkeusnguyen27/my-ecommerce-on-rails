@@ -1,2 +1,9 @@
 .bold { font-weight: bolder; }
 .italic { font-style: italic; }
+
+.cards { display: flex; flex-wrap: wrap;  gap: 4px;}
+.product-card {
+    flex: 1 1 33%;
+    border: solid 1px #730E15;
+    border-radius: 8px;
+}

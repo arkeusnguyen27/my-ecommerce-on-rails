@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.6'
+ruby '3.0.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.0.6'
+gem 'rails', '~> 6.1.5'
 gem 'devise'
 gem 'slim'
 gem "slim-rails"
@@ -26,6 +26,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'image_processing', '~> 1.2'
 gem 'friendly_id', '~> 5.4.0'
 gem 'aws-sdk-s3'
+gem 'ransack', :github => 'activerecord-hackery/ransack', :branch => 'main'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
