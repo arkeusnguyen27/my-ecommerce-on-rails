@@ -1,4 +1,8 @@
 .card-wrapper
+  - if product.cover.attached?
+    = image_tag product.cover, style: "height: 100%; width: 100%; object-fit: contain" 
   .title
     = link_to product.title, shop_product_path(shop, product)
   .description == product.description
+
+

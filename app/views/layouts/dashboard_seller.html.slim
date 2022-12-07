@@ -1,0 +1,19 @@
+html 
+  head
+    title Dashboard | Products
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+body 
+  = javascript_pack_tag 'dashboard/dashboard'
+  = render "layouts/navbars/home_nav"
+  = render 'dashboard_seller/partials/side_bar', {paths: @paths}
+  #main
+    p class="notice" = notice
+    p class="alert" = alert
+    = yield 
+

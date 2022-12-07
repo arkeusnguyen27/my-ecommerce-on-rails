@@ -1,8 +1,14 @@
+
+
 p#notice = notice
 
 p
   strong Title:
   =< @product.title
+
+- if @product.cover.attached? 
+  = image_tag @product.cover, style="height: 100%; width: 100%; object-fit: contain"
+
 
 p
   strong Description:

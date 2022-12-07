@@ -5,7 +5,7 @@
 = render 'dashboard/partials/side_bar', {paths: @paths}
 
 #main
-  h1 Seller
+  = link_to "Add product", new_seller_product_path
   = render "dashboard/partials/seller/#{@view_template}"
 
 

@@ -14,6 +14,8 @@ window.update_featured_products = function () {
     },
     body: JsonData
   })
+
+  alert("ok")
 }
 
 window.handleCheckbox = function (product_id) {

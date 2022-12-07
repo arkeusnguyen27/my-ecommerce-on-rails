@@ -2,13 +2,13 @@ class DashboardController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!, except: [:toggle_featured_products]
   before_action :authenticate_shop, only: [:toggle_featured_products]
+  
   def seller_dashboard
-
   end
 
   def buyer_dashboard
-
   end
+  
 
   def index
     if current_user.seller?

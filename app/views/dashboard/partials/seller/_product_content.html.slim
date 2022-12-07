@@ -21,7 +21,7 @@ table.table
       tr
         th scope='row' = product.id
         th = product.title
-        th Edit
+        th = link_to "Edit", edit_seller_product_path(product)
         th Remove
         th
           input type='checkbox' id="product_featured_checkbox_#{product.id}" onclick="handleCheckbox(#{product.id})" checked=product.featured
