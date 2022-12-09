@@ -16,10 +16,15 @@ Rails.application.routes.draw do
   get "/pricing", to: "home#pricing"
   get "/search", to: "home#search"
 
+  resources :line_items, only: [:create, :update]
 
   resources :shops, only: [:show, :index] do
     resources :products, only: [:show, :index, :edit, :update]
   end
+
+  resources :orders, only: [:create, :show]
+  get "/cart", to: 'orders#cart'
+
 
   put '/api/toggle_featured_products', to: "dashboard#toggle_featured_products"
 end

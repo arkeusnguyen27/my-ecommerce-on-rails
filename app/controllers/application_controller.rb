@@ -17,6 +17,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def is_buyer?
+    unless current_user.present?
+      return respond_to do |format|
+        format.html { redirect_to new_user_session_url, notice: "You need to login first" }
+      end
+    end
+
+    unless current_user.buyer?
+      return respond_to do |format|
+        format.html { redirect_to request.referrer, notice: "You need to login as a buyer" }
+      end
+    end
+
+  end
+
 
   protected
 

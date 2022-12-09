@@ -11,6 +11,7 @@ class User < ApplicationRecord
   def cart
     orders.find_or_create_by(status: 'cart')
   end
+
   def buyer?
     role == 'buyer'
   end

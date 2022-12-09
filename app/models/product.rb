@@ -14,6 +14,10 @@ class Product < ApplicationRecord
   def self.public_products
     self.all
   end
+
+  def self.selling_products
+    all
+  end
 end
 
 

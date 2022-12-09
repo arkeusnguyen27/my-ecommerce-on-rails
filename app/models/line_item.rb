@@ -19,6 +19,13 @@ class LineItem < ApplicationRecord
     end
   end
 
+  def sub_total
+    quantity * price
+  end
+
+  def remove
+    delete
+  end
 
   def self.add(user, p, quantity)
     cart = user.cart

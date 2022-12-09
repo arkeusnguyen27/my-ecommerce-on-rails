@@ -35,13 +35,20 @@
         <% end %>
       </li>
 
-      <li class="nav-item">
-        <% if current_user.present? %>
+      <% if current_user.present? %>
+        <li class="nav-item">
           <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"nav-link" %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path, class:"nav-link" %>
+        </li>
+        <% if current_user.buyer? %>
+          <li class="nav-item" id='nav-cart'>
+            <%= render 'layouts/navbars/nav_cart' %>
+          </li>
         <% end %>
-      </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Sign up", new_user_registration_path, class:"nav-link" %>
+        </li>
+      <% end %>
 
     </ul>
     <form class="form-inline my-2 my-lg-0">

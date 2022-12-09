@@ -1,0 +1,22 @@
+.cart-page__container
+  h1 Cart
+  table.cart-table
+    thead
+      tr
+        th Name
+        th Price
+        th Quantity
+        th Sub total
+    tbody
+    - @cart.line_items.each do |line_item|
+      tr
+        td = line_item.product.title
+        td = line_item.price
+        td = line_item.quantity
+        td = line_item.sub_total
+  h1
+    | Total:
+    => @cart.total
+
+- if @cart.can_checkout?
+  = link_to "Proceed", cart_path({confirmation: true}), class:'cart-check-out-button'

@@ -7,3 +7,15 @@
     border: solid 1px #730E15;
     border-radius: 8px;
 }
+
+
+.nav-cart {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #730E15;
+    color: white !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}

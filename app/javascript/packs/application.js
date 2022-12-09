@@ -8,6 +8,9 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("bootstrap")
+import $ from 'jquery';
+global.$ = jQuery;
+
 import "../stylesheets/application";
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -21,6 +24,7 @@ import "../stylesheets/application";
 document.addEventListener("turbolinks:before-visit", function() {
   Turbolinks.clearCache();
 })
+
 document.addEventListener("turbolinks:load", function() {
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()

@@ -1,21 +1,29 @@
 
 
-p#notice = notice
+.product-container
+  p
+    strong Title:
+    =< @product.title
 
-p
-  strong Title:
-  =< @product.title
-
-- if @product.cover.attached? 
-  = image_tag @product.cover, style="height: 100%; width: 100%; object-fit: contain"
+  - if @product.cover.attached?
+    = image_tag @product.cover, style:"height: 100%; width: 100%; object-fit: contain"
 
 
-p
-  strong Description:
-  .trix-content
-    == @product.description
+  p
+    strong Description:
+    .trix-content
+      == @product.description
+  p
+    strong
+      | Price
+      = @product.price
 
-- if current_user.present? && current_user.shop == @product.shop
-  => link_to "Edit", edit_shop_product_path(@product.shop, @product)
-  '|
-=< link_to "Back", shop_products_path(@product.shop)
+  = form_for :line_item, url: line_items_path, remote: true do |f|
+    = f.number_field :quantity, min: 0, value: 1
+    = f.number_field :product_id, hidden: true, value: @product.id
+    = f.submit "Add to cart"
+
+  - if current_user.present? && current_user.shop == @product.shop
+    => link_to "Edit", edit_shop_product_path(@product.shop, @product)
+    '|
+  =< link_to "Back", shop_products_path(@product.shop)
