@@ -1,0 +1,3 @@
+
+$("[data-id='<%= @line_item.id %>']").html("<%= j render "orders/cart_item", line_item: @line_item %>")
+$("#cart-total").html("Total: <%= @line_item.order.total %>")

@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :line_items
 
+  scope :completed, -> { where(status: 'completed')}
 
   def complete
     if can_checkout?

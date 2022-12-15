@@ -1,10 +1,11 @@
-.card-wrapper
-  - if product.cover.attached?
-    = image_tag product.cover, style: "height: 100%; width: 100%; object-fit: contain" 
-  .title
-    = link_to product.title, shop_product_path(shop, product)
-  .description == product.description
-  .price
-    | $
-    =< product.price
+
+.card.shop-card style="width: 18rem;"
+  / - if product.cover.attached?
+  /   = image_tag product.cover, class:"card-img-top", style: "height: 100%; width: 100%; object-fit: contain"
+  .card-body
+    .card-title
+      = link_to product.title, shop_product_path(shop, product)
+  .card-text == product.description
+  .btn.btn-primary
+    = link_to "$ #{product.price}", shop_product_path(shop, product)
 

@@ -1,0 +1,11 @@
+
+
+
+.card
+  .card-header
+    = review.title
+  .card-body
+    blockquote.blockquote.mb-0
+      p = review.body
+      footer.blockquote-footer
+        cite = review.user.name

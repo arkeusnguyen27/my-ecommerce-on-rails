@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_07_042859) do
+ActiveRecord::Schema.define(version: 2022_12_15_043226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,8 +71,13 @@ ActiveRecord::Schema.define(version: 2022_12_07_042859) do
     t.decimal "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "reviewed_at"
+    t.bigint "buyer_id"
+    t.bigint "shop_id"
+    t.index ["buyer_id"], name: "index_line_items_on_buyer_id"
     t.index ["order_id"], name: "index_line_items_on_order_id"
     t.index ["product_id"], name: "index_line_items_on_product_id"
+    t.index ["shop_id"], name: "index_line_items_on_shop_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -94,6 +99,18 @@ ActiveRecord::Schema.define(version: 2022_12_07_042859) do
     t.decimal "price", default: "0.0"
     t.index ["shop_id"], name: "index_products_on_shop_id"
     t.index ["slug"], name: "index_products_on_slug", unique: true
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "review_type", default: "product"
+    t.bigint "user_id"
+    t.bigint "line_item_id"
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["line_item_id"], name: "index_reviews_on_line_item_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "shop_settings", force: :cascade do |t|
@@ -129,6 +146,7 @@ ActiveRecord::Schema.define(version: 2022_12_07_042859) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "line_items", "users", column: "buyer_id"
   add_foreign_key "products", "shops"
   add_foreign_key "shops", "users"
 end

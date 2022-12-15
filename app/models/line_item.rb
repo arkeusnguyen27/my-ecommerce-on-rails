@@ -1,6 +1,12 @@
 class LineItem < ApplicationRecord
   belongs_to :order
   belongs_to :product
+  has_one :review
+  belongs_to :buyer, class_name: 'User'
+  belongs_to :shop
+
+  scope :reviewed, -> { where.not(reviewed_at: nil )}
+  scope :not_reviewed, -> { where(reviewed_at: nil )}
 
 
   def add(input_quantity)
@@ -25,6 +31,10 @@ class LineItem < ApplicationRecord
 
   def remove
     delete
+  end
+
+  def self.testing(p, u)
+    self.where(product: p).not_reviewed.map(&:order).pluck(:user_id).include?(u.id)
   end
 
   def self.add(user, p, quantity)

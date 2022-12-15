@@ -1,10 +1,6 @@
 = javascript_pack_tag 'dashboard/dashboard'
-
-h1 buyer
-
-
-= render 'dashboard/partials/side_bar', { paths: [] }
-
-= render 'dashboard/partials/buyer/main_content'
+= render 'dashboard/partials/side_bar', {paths: @paths}
+#main
+  = render "dashboard/partials/buyer/#{@view_template}"
 
 

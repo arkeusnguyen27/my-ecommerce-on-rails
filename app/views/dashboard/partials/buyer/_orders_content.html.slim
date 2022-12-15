@@ -1,0 +1,24 @@
+
+button.openbtn onclick='openNav()'
+| ☰ Open Sidebar
+h2 Historical orders
+
+table.table
+  thead
+    tr
+      th scope='col' #
+      th scope='col' Date
+      th scope='col' Number of items
+      th scope='col' Total
+      th scope='col'
+  tbody
+    - current_user.orders.completed.each do |order|
+      tr
+        th scope='row' = order.id
+        th = order.updated_at.strftime("%d-%m-%Y")
+        / th = link_to "Edit", edit_seller_product_path(product)
+        th = order.count_items
+        th
+          => number_to_currency(order.total)
+        th = link_to "show", order_path(order.id)
+

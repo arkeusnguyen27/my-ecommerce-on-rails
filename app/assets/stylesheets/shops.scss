@@ -1,0 +1,9 @@
+.cards-wrapper {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.shop-card {
+  flex: 1 1 33%;
+}

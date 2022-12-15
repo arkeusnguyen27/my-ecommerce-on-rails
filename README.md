@@ -17,7 +17,7 @@
   - ~~setting page: allow seller to select listing products~~
   - Create shop page => shows [~~shop's products~~, reviews]
 - Should be able to set product status (selling, pending, draft, archive)
-  - Should be to see orders (related to his products only) - how much $, quantity, price
+  - ~~Should be to see orders (related to his products only) - how much $, quantity,~~ price
 - Have some statistics for each product (stock, sold,  rev ) - in a specific time range
 
 
@@ -25,8 +25,9 @@
 - Should be able to browse products
   - by categories
 - ~~Should be able to browse products from a specific shop~~
-- Should be able to buy products (multiple items)
-- Should be able to see historical purchases/orders 
+- ~~Should be able to buy products (multiple items)~~
+  ~~- Have cart page, update items~~
+~~- Should be able to see historical purchases/orders~~ 
 
 
 

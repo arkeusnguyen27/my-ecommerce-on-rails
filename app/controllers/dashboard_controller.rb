@@ -16,6 +16,8 @@ class DashboardController < ApplicationController
       @view_template = params[:view_param].present? ? 'product_content' : 'main_content'
       render 'seller_dashboard'
     else
+      @paths = [{name: 'Orders', path: 'orders'}]
+      @view_template = params[:view_param].present? ? 'orders_content' : 'main_content'
       render 'buyer_dashboard'
     end
   end

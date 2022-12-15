@@ -23,7 +23,22 @@
     = f.number_field :product_id, hidden: true, value: @product.id
     = f.submit "Add to cart"
 
-  - if current_user.present? && current_user.shop == @product.shop
-    => link_to "Edit", edit_shop_product_path(@product.shop, @product)
-    '|
+
   =< link_to "Back", shop_products_path(@product.shop)
+
+// if buyer already bought this product, show review form
+- if @product.has_bought_and_not_reviewed_by?(current_user)
+  h1 It looks like you have bought this product, please leave a review
+  = form_for :review, url: reviews_path, method: :post do |f|
+    = f.number_field :product_id, hidden: true, value: @product.id
+    = f.label :title
+    = f.text_field :title
+    = f.label :body
+    = f.text_area :body
+    = f.submit
+
+- if @product.completed_reviews.count > 0
+  h1 See what people say about this product:
+  .reviews-container
+    - @product.completed_reviews.each do |review|
+      = render "reviews/review_card", review: review
