@@ -5,6 +5,8 @@ table
     tr
       th Title
       th Shop
+      th reviews
+      th purchases
       th
       th
       th
@@ -14,6 +16,8 @@ table
       tr
         td = product.title
         td = product.shop.name
+        td = product.reviews_count
+        td = product.purchases_count
         td = link_to "Show", shop_product_path(product.shop, product)
         - if current_user.present? && current_user.shop == product.shop
           td = link_to "Edit", edit_shop_product_path(product.shop, product)

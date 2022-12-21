@@ -7,5 +7,9 @@
   .card-body
     blockquote.blockquote.mb-0
       p = review.body
+
+      - if review.rating.present?
+        - review.rating.times do
+          span.material-icons star
       footer.blockquote-footer
         cite = review.user.name

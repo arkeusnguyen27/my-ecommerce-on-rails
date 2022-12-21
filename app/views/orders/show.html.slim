@@ -11,7 +11,7 @@
     tbody
     - @order.line_items.each do |line_item|
       tr
-        td = line_item.product.title
+        td = link_to line_item.product.title, shop_product_path(line_item.product.shop, line_item.product)
         td = line_item.price
         td = line_item.quantity
         td = line_item.sub_total

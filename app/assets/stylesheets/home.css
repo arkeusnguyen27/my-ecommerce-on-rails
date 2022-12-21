@@ -1,6 +1,11 @@
 .bold { font-weight: bolder; }
 .italic { font-style: italic; }
 
+
+body {
+    padding: 0 0 80px 0;
+}
+
 .cards { display: flex; flex-wrap: wrap;  gap: 4px;}
 .product-card {
     flex: 1 1 33%;
@@ -19,3 +24,4 @@
     justify-content: center !important;
     align-items: center !important;
 }
+

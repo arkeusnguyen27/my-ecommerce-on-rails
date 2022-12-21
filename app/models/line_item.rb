@@ -45,7 +45,14 @@ class LineItem < ApplicationRecord
     if line_item.present?
       line_item.add(quantity)
     else
-      return self.create(order_id: cart.id, product_id: p.id, price: p.price, quantity: quantity)
+      return self.create(
+        order_id: cart.id,
+        product_id: p.id,
+        price: p.price,
+        quantity: quantity,
+        buyer: user,
+        shop: p.shop
+      )
     end
   end
 end

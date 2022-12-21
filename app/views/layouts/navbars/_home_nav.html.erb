@@ -12,14 +12,12 @@
       <li class="nav-item">
         <%= link_to "All Shops", shops_path, class:"nav-link" %>
       </li>
-<!--      <li class="nav-item">-->
-        <%#= link_to "All Products", shop_products_path, class:"nav-link" %>
-<!--      </li>-->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-          Dropdown
+          Dashboard
         </a>
         <div class="dropdown-menu">
+          <%= link_to "Dashboard", dashboard_index_path, class:"dropdown-item" %>
           <%= link_to "About Us", about_us_path, class:"dropdown-item" %>
           <%= link_to "Apps", apps_path, class:"dropdown-item" %>
 

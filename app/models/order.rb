@@ -7,6 +7,10 @@ class Order < ApplicationRecord
   def complete
     if can_checkout?
       update(status: 'completed')
+      # Run job to increment purchase count
+      line_items.each do |line_item|
+        Product.increment_counter(:purchases_count, line_item.product.id)
+      end
     else
       false
     end
