@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
     unless @shop.present?
       return respond_to do |format|
-        format.html { redirect_to products_url(), notice: "You need to own a shop to create products" }
+        format.html { redirect_to products_url(), notice: "You're not the shop owner" }
       end
     end
   end

@@ -1,4 +1,8 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+  mount Sidekiq::Web => "/sidekiq" # mount Sidekiq::Web in your Rails app
+
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
 
@@ -27,6 +31,7 @@ Rails.application.routes.draw do
 
 
   resources :reviews, only: [:create]
+  post '/reviews_by_email', to: 'reviews#create_by_email', as: 'reviews_by_email'
 
   get '/sellers/orders/:id', to: 'seller_orders#show', as: 'seller_orders'
   get '/products', to: 'products#index'

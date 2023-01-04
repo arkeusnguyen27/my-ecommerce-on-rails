@@ -18,6 +18,9 @@ class Order < ApplicationRecord
         SellerOrder.create_order(shop_id, self)
       end
 
+      # send review request email (after 7 days)
+      BuyerMailer.with(order_id: id).first_request_to_review_email.deliver_later()
+
     else
       false
     end

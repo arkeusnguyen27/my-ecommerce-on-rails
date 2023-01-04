@@ -50,6 +50,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     return unless resource.seller?
 
     Shop.create(user: resource, name: resource.email.split("@").first)
+    SellerMailer.with(user: resource).welcome_email.deliver_later
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

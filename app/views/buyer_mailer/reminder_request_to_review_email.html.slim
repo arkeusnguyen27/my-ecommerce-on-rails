@@ -1,0 +1,19 @@
+html
+  head
+    meta content='text/html; charset=UTF-8' http-equiv='Content-Type'
+  body
+    h1
+      | Hello to #{@buyer.name},
+
+    p
+      | It looks like you haven't review this product yet, please let us know your experience
+    = form_for :review, url: reviews_by_email_url, method: :post do |f|
+      = f.text_field :token, hidden: true, value: @token
+      = f.number_field :line_item_id, hidden: true, value: @line_item.id
+      = f.label :title
+      = f.text_field :title
+      = f.label :body
+      = f.text_area :body
+      = f.label :rating
+      = f.select :rating, options_for_select([['5 stars', 5],['4 stars', 4],['3 stars', 3],['2 stars', 2],['1 stars', 1]], 5)
+      = f.submit

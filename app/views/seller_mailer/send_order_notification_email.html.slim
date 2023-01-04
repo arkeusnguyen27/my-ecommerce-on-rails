@@ -1,0 +1,18 @@
+
+html
+  head
+    meta content='text/html; charset=UTF-8' http-equiv='Content-Type'
+    title An order has been made on Judge.me
+  body
+    h1
+      | Hello to #{@seller.name},
+
+    p
+      | You have a new order on Judge.me
+    p
+      | To see your order, click on this
+    a href="#{seller_orders_url(@order.id)}" target='_blank' link
+      | .
+    p Thanks!
+
+

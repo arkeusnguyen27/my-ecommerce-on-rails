@@ -23,6 +23,7 @@ class OrdersController < ApplicationController
     # success?
     cart = current_user.cart
     if cart.complete
+      # send email to sellers
       redirect_to order_path(cart.id)
     else
       redirect_to cart_path

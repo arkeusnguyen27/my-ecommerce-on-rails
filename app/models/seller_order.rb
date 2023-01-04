@@ -14,15 +14,19 @@ class SellerOrder < ApplicationRecord
       total_items += line_item.quantity
       total_amount += line_item.quantity * line_item.price
     end
-
+    shop = Shop.find(shop_id)
     new_order = self.new(
-      shop: Shop.find(shop_id),
+      shop: shop,
       order: order,
       total_items: total_items,
       total_amount: total_amount,
       total_line_items: total_line_items
     )
-    new_order.save
+
+    if new_order.save
+      SellerMailer.with(seller: shop.owner, order: new_order).send_order_notification_email.deliver_later
+    end
+
   end
 
 

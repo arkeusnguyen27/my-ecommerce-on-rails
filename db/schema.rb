@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_23_042100) do
+ActiveRecord::Schema.define(version: 2023_01_04_061852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 2022_12_23_042100) do
     t.datetime "reviewed_at"
     t.bigint "buyer_id"
     t.bigint "shop_id"
+    t.integer "retry_count", default: 0
+    t.boolean "retry_disabled", default: false
     t.index ["buyer_id"], name: "index_line_items_on_buyer_id"
     t.index ["order_id"], name: "index_line_items_on_order_id"
     t.index ["product_id"], name: "index_line_items_on_product_id"
@@ -162,6 +164,7 @@ ActiveRecord::Schema.define(version: 2022_12_23_042100) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
+    t.integer "sending_reminder_retry_count", default: 3
     t.index ["slug"], name: "index_shops_on_slug", unique: true
     t.index ["user_id"], name: "index_shops_on_user_id", unique: true
   end
