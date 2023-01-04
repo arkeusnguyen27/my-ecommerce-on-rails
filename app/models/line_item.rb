@@ -8,6 +8,7 @@ class LineItem < ApplicationRecord
   scope :reviewed, -> { where.not(reviewed_at: nil )}
   scope :not_reviewed, -> { where(reviewed_at: nil )}
 
+  scope :from_shop, -> (shop_id ) { where(shop_id: shop_id) }
 
   def add(input_quantity)
     if quantity + input_quantity <= 0

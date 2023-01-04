@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [:create]
 
+  get '/sellers/orders/:id', to: 'seller_orders#show', as: 'seller_orders'
   get '/products', to: 'products#index'
   put '/api/toggle_featured_products', to: "dashboard#toggle_featured_products"
 end

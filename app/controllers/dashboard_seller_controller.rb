@@ -5,7 +5,6 @@ class DashboardSellerController < DashboardController
 
   layout "dashboard_seller"
 
-
   def routes
     @paths = [{name: 'Products', path: 'products'}]
   end

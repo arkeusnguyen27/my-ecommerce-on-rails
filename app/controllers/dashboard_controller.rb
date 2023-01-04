@@ -12,11 +12,24 @@ class DashboardController < ApplicationController
 
   def index
     if current_user.seller?
-      @paths = [{name: 'Products', path: 'products'}]
-      @view_template = params[:view_param].present? ? 'product_content' : 'main_content'
+      @paths = [
+        {name: 'Products', path: 'products'},
+        {name: 'Orders', path: 'orders'},
+      ]
+      case params[:view_param]
+      when 'products'
+        @view_template = 'products_content'
+      when 'orders'
+        @view_template = 'orders_content'
+      else
+        @view_template = 'main_content'
+      end
+
       render 'seller_dashboard'
     else
-      @paths = [{name: 'Orders', path: 'orders'}]
+      @paths = [
+        {name: 'Orders', path: 'orders'}
+      ]
       @view_template = params[:view_param].present? ? 'orders_content' : 'main_content'
       render 'buyer_dashboard'
     end
@@ -37,9 +50,14 @@ class DashboardController < ApplicationController
       }
     end
 
-    @shop_setting.featured_products = @shop_setting.featured_products - unchecked_product_ids
-    @shop_setting.featured_products = @shop_setting.featured_products + checked_product_ids
-    @shop_setting.featured_products = @shop_setting.featured_products.uniq
+    if !@shop_setting.featured_products.present?
+      @shop_setting.featured_products = checked_product_ids
+    else
+      @shop_setting.featured_products = @shop_setting.featured_products - unchecked_product_ids
+      @shop_setting.featured_products = @shop_setting.featured_products + checked_product_ids
+      @shop_setting.featured_products = @shop_setting.featured_products.uniq
+    end
+
     @shop_setting.save
 
     # uncheck products

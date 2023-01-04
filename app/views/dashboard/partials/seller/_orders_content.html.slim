@@ -1,0 +1,34 @@
+= javascript_pack_tag 'dashboard/seller_update_featured_products'
+
+button.openbtn onclick='openNav()'
+| ☰ Open Sidebar
+h2 Seller Products
+
+table.table
+  thead
+    tr
+      th scope='col' #
+      th scope='col' buyer
+      th scope='col' status
+      th scope='col' action
+      th scope='col' number of products
+      th scope='col' total quantity
+      th scope='col' total amount
+      / th scope='col'
+      / th scope='col'
+      /   button type='button' onclick='update_featured_products()'
+      /     | Featured Products
+  tbody
+    - current_user.shop.seller_orders.each do |order|
+      tr
+        th scope='row' = order.id
+        th = order.order.user.name
+        th = order.status
+        th = link_to "show", seller_orders_path(order.id)
+        th = order.total_line_items
+        th = order.total_items
+        th = order.total_amount
+        / th = link_to "Edit", edit_seller_product_path(product)
+        / th Remove
+        / th
+        /   input type='checkbox' id="product_featured_checkbox_#{product.id}" onclick="handleCheckbox(#{product.id})" checked=product.featured

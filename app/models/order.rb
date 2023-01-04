@@ -8,9 +8,16 @@ class Order < ApplicationRecord
     if can_checkout?
       update(status: 'completed')
       # Run job to increment purchase count
+      shop_ids = []
       line_items.each do |line_item|
         Product.increment_counter(:purchases_count, line_item.product.id)
+        shop_ids << line_item.shop_id
       end
+      shop_ids = shop_ids.uniq
+      shop_ids.each do |shop_id|
+        SellerOrder.create_order(shop_id, self)
+      end
+
     else
       false
     end

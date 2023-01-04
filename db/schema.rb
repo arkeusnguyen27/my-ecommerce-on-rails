@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_21_045215) do
+ActiveRecord::Schema.define(version: 2022_12_23_042100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,6 +117,37 @@ ActiveRecord::Schema.define(version: 2022_12_21_045215) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "seller_line_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.decimal "price"
+    t.datetime "reviewed_at"
+    t.bigint "line_item_id"
+    t.bigint "product_id"
+    t.bigint "buyer_id"
+    t.bigint "shop_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["buyer_id"], name: "index_seller_line_items_on_buyer_id"
+    t.index ["line_item_id"], name: "index_seller_line_items_on_line_item_id"
+    t.index ["product_id"], name: "index_seller_line_items_on_product_id"
+    t.index ["shop_id"], name: "index_seller_line_items_on_shop_id"
+  end
+
+  create_table "seller_orders", force: :cascade do |t|
+    t.bigint "shop_id"
+    t.bigint "buyer_id"
+    t.string "status"
+    t.bigint "order_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.decimal "total_amount"
+    t.integer "total_items"
+    t.integer "total_line_items"
+    t.index ["buyer_id"], name: "index_seller_orders_on_buyer_id"
+    t.index ["order_id"], name: "index_seller_orders_on_order_id"
+    t.index ["shop_id"], name: "index_seller_orders_on_shop_id"
+  end
+
   create_table "shop_settings", force: :cascade do |t|
     t.bigint "shop_id"
     t.bigint "featured_products", array: true
@@ -152,5 +183,7 @@ ActiveRecord::Schema.define(version: 2022_12_21_045215) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "line_items", "users", column: "buyer_id"
   add_foreign_key "products", "shops"
+  add_foreign_key "seller_line_items", "users", column: "buyer_id"
+  add_foreign_key "seller_orders", "users", column: "buyer_id"
   add_foreign_key "shops", "users"
 end

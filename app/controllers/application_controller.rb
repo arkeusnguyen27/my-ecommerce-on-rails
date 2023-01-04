@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
   def is_buyer?
     unless current_user.present?
       return respond_to do |format|

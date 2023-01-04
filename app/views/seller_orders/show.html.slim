@@ -1,0 +1,25 @@
+
+.cart-page__container
+  h1 Shop Order Summary
+  h2 Original order # #{@so.order_id}
+  table.cart-table
+    thead
+      tr
+        th Name
+        th Price
+        th Quantity
+        th Sub total
+    tbody
+    - @line_items.each do |line_item|
+      tr
+        td = line_item.product.title
+        td = line_item.price
+        td = line_item.quantity
+        td = line_item.sub_total
+
+  h1
+    | Total:
+
+
+
+
