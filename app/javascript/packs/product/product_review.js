@@ -1,16 +1,4 @@
-
-
-window.openNav = function() {
-  document.getElementById("mySidebar").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
-}
-
-window.closeNav = function() {
-  document.getElementById("mySidebar").style.width = "0";
-  document.getElementById("main").style.marginLeft= "0";
-}
-
-
+var select = document.querySelector("#review_rating");
 function changeStar() {
     var emptystar = 5 - this.value;
     var block = document.querySelectorAll('.fa-star');
@@ -34,8 +22,4 @@ function changeStar() {
     }
 }
 
-window.selectRating = function() {
-  console.log("heheeh");
-  var select = document.querySelector("#review_rating");
-  select.addEventListener('change', changeStar, false);
-}
+select.addEventListener('change', changeStar, false);

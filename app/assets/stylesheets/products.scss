@@ -5,16 +5,82 @@
 
 
 .product-container {
-  width: 100%;
-  min-width: 600px;
-  max-width: 1000px;
+  display: flex;
+  margin: 30px;
+}
+.product-right{
+  width: 60%;
+}
+.product-left{
+  width: 40%;
 }
 
 .reviews-container {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1170px;
+  max-width: 1200px;
   gap: 8px;
   display: flex;
   flex-direction: column;
+}
+
+.form-wrapper form {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-form {
+  width: 85%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+select#review_rating {
+  text-align: center;
+}
+
+.form-wrapper form > *:nth-child(even):not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.fa-solid.fa-star {
+  color: #f7b500;
+}
+
+b.review-title {
+  font-weight: 700;
+  display: block;
+  font-size: 110%;
+  font-family: 'Hind', sans-serif;
+  color
+: #777777;
+}
+
+p.review-body {
+  font-family: 'Hind', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: #777777;
+}
+
+span.reviewer-name {
+  font-size: 24px !important;
+  vertical-align: middle;
+  font-weight: bold;
+  font-family: 'Hind', sans-serif;
+  line-height: 22px;
+  color: #777777;
+}
+
+span.review-date {
+  margin-left: 5px;
+  display: block;
+  width: 9ch;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.review-rating-star {
+  display: flex;
+  align-items: baseline;
 }

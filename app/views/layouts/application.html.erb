@@ -4,7 +4,7 @@
     <title>Ecomerce</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -12,13 +12,42 @@
 
   <body>
     <%= render "layouts/navbars/home_nav" %>
-
+    <% if false %>
     <p class="notice" id='app_notice'><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <% end %>
     <%= yield %>
 
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+      function changeStar() {
+        var emptystar = 5 - this.value;
+        var block = document.querySelectorAll('.fa-star');
+
+        // case: click 5 -> fulfill all
+        if(emptystar == 0){
+            for (let index = 0; index < 5; index++) {
+                block[index].classList.replace('fa-regular','fa-solid');
+            }
+        }
+        else{
+          // case: first click 1 - 4 star
+            // first loop to fulfill 
+            for (let index = 0; index < this.value; index++) {
+                block[index].classList.replace('fa-regular','fa-solid');
+            }
+            // second loop to empty
+            for (let index = this.value ; index < 5; index++) {
+                block[index].classList.replace('fa-solid','fa-regular');
+            }
+          }
+        }
+        if(document.querySelector("#review_rating")){
+          var select = document.querySelector("#review_rating");
+          select.addEventListener('change', changeStar, false);
+        }
+    </script>
   </body>
 </html>
 

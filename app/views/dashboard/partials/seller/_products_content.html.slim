@@ -9,8 +9,9 @@ h2 Seller Products
 table.table
   thead
     tr
-      th scope='col' #
+      th scope='col' id
       th scope='col' title
+      th scope='col' price
       th scope='col'
       th scope='col'
       th scope='col'
@@ -21,7 +22,11 @@ table.table
       tr
         th scope='row' = product.id
         th = product.title
-        th = link_to "Edit", edit_seller_product_path(product)
-        th Remove
+        th = product.price
         th
-          input type='checkbox' id="product_featured_checkbox_#{product.id}" onclick="handleCheckbox(#{product.id})" checked=product.featured
+          .btn.btn-warning = link_to "Edit", edit_seller_product_path(product)
+        th
+          .btn.btn-danger = link_to "Delete", seller_product_path(product), method: :delete
+        th
+          .input-group-text
+            input type='checkbox' id="product_featured_checkbox_#{product.id}" onclick="handleCheckbox(#{product.id})" checked=product.featured

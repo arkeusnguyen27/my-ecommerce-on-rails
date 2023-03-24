@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :dashboard, only: [:index] do
     collection do
-      resources :products, only: [:new, :create, :edit, :update], controller: 'seller_products', as: 'seller_products'
+      resources :products, only: [:new, :create, :edit, :update, :destroy], controller: 'seller_products', as: 'seller_products'
       # resources :orders, only: [:new, :create, :edit], controller: 'seller_orders'
       get ':view_param', to: 'dashboard#index', as: "dashboard_view"
     end

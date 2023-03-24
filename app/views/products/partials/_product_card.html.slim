@@ -2,10 +2,13 @@
 .card.shop-card style="width: 18rem;"
   / - if product.cover.attached?
   /   = image_tag product.cover, class:"card-img-top", style: "height: 100%; width: 100%; object-fit: contain"
+  img.card-img-top src="https://cdn3d.iconscout.com/3d/premium/thumb/product-5806313-4863042.png" style= "height: 300px; width: 100%; object-fit: contain;"
   .card-body
-    .card-title
-      = link_to product.title, shop_product_path(shop, product)
-  .card-text == product.description
-  .btn.btn-primary
-    = link_to "$ #{product.price}", shop_product_path(shop, product)
+    .card-title style="text-align:center;"
+      = product.title
+  .price style="text-align:center;"
+    = product.price
+  .btn.btn-info
+    .info-text
+      = link_to "See more", shop_product_path(shop, product), style: "width: 100%; display:block;"
 

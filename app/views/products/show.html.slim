@@ -1,53 +1,63 @@
 
-
+button.btn.btn-light 
+  =< link_to "<- Back to category page",  shop_path(@product.shop)
 .product-container
-  p
-    strong Title:
-    =< @product.title
+  .product-right
+    img.card-img-top src="https://cdn3d.iconscout.com/3d/premium/thumb/product-5806313-4863042.png" style= "height: 300px; width: 100%; object-fit: contain;"
+  .product-left
+    h1
+      == @product.title
 
-  p
-    - if @product.average_rating
-      strong This product has been bought #{@product.purchases_count} times with #{@product.average_rating} stars rating from #{@product.reviews_count} reviews
-    - else
-      strong This product has been bought #{@product.purchases_count} times with #{@product.reviews_count} reviews
-
-
-  - if @product.cover.attached?
-    = image_tag @product.cover, style:"height: 100%; width: 100%; object-fit: contain"
+    p
+      - if @product.average_rating
+        strong This product has been bought #{@product.purchases_count} times with #{@product.average_rating} stars rating from #{@product.reviews_count} reviews
+      - else
+        strong This product has been bought #{@product.purchases_count} times with #{@product.reviews_count} reviews
 
 
-  p
-    strong Description:
-    .trix-content
-      == @product.description
-  p
-    strong
-      | Price
-      = @product.price
-
-  = form_for :line_item, url: line_items_path, remote: true do |f|
-    = f.number_field :quantity, min: 0, value: 1
-    = f.number_field :product_id, hidden: true, value: @product.id
-    = f.submit "Add to cart"
+    // - if @product.cover.attached?
+      // = image_tag @product.cover, style:"height: 100%; width: 100%; object-fit: contain"
 
 
-  =< link_to "Back", shop_products_path(@product.shop)
+    p
+      strong Description:
+      .trix-content
+        == @product.description
+    p
+      strong
+        | Price:
+        =< @product.price
+
+    = form_for :line_item, url: line_items_path, remote: true do |f|
+      = f.number_field :quantity, min: 0, value: 1
+      = f.number_field :product_id, hidden: true, value: @product.id
+      = f.submit "Add to cart"
 
 // if buyer already bought this product, show review form
 - if @product.has_bought_and_not_reviewed_by?(current_user)
-  h1 It looks like you have bought this product, please leave a review
-  = form_for :review, url: reviews_path, method: :post do |f|
-    = f.number_field :product_id, hidden: true, value: @product.id
-    = f.label :title
-    = f.text_field :title
-    = f.label :body
-    = f.text_area :body
-    = f.label :rating
-    = f.select :rating, options_for_select([['5 stars', 5],['4 stars', 4],['3 stars', 3],['2 stars', 2],['1 stars', 1]], 5)
-    = f.submit
+  .review-form
+    h2 Leave a review for the product you have purchased
+    .form-wrapper
+      = form_for :review, url: reviews_path, method: :post do |f|
+        = f.number_field :product_id, hidden: true, value: @product.id
+        = f.label :title
+        = f.text_field :title
+        = f.label :body
+        = f.text_area :body, style: "height:150px"
+        = f.label :rating
+        .rating-wrapper
+          .star-wrapper
+            i.fa-solid.fa-star 
+            i.fa-solid.fa-star
+            i.fa-solid.fa-star
+            i.fa-solid.fa-star
+            i.fa-solid.fa-star
+          = f.select :rating, options_for_select([['5 stars', 5],['4 stars', 4],['3 stars', 3],['2 stars', 2],['1 stars', 1]], 5)
+        = f.submit
 
 - if @product.completed_reviews.count > 0
-  h1 See what people say about this product:
   .reviews-container
+    h2 Discover what people feel for this product
     - @product.completed_reviews.each do |review|
       = render "reviews/review_card", review: review
+      

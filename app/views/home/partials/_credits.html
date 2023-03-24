@@ -1,0 +1,59 @@
+hello, this is ark
+<br>
+# Simple ecommerce platform
+<br>
+<br>
+<br>
+<hr>
+## Users
+<hr>
+ Should be able to register/login/logout account<br>
+ user chooses a role ['buyer', 'seller']<br>
+create account<br>
+if register as a seller => we automatically create a shop for seller (with default info)<br>
+<br>
+## Sellers
+<hr>
+Dashboard
+- Should be able to create product to sell (prices, images, title, body)<br>
+- Should be able to list products on their own shop page.<br>
+  - setting page: allow seller to select listing products<br>
+  - Create shop page => shows shop's products reviews]<br>
+- Should be able to set product status (selling, pending, draft, archive)<br>
+  - Should be to see orders (related to his products only) - how much $, quantity price<br>
+- Have some statistics for each product (stock, sold,  rev ) - in a specific time range<br>
+<br>
+
+## Buyers
+<hr>
+- Should be able to browse products<br>
+  - by categories<br>
+- Should be able to browse products from a specific shop<br>
+- Should be able to buy products (multiple items<br>
+   Have cart page, update items<br>
+ Should be able to see historical purchases/orders <br>
+
+<br>
+
+## Reviews
+<hr>
+- Buyers who purchased products can leave reviews for them.<br>
+  - Seller should be able to send review request to buyers for purchased products<br>
+  - Reminder request for review<br>
+- Should be able to review products<br>
+- Extra: allow sellers to showcase some reviews on their homepage<br>
+<br>
+
+## Emails
+<hr>
+- Send welcome email to seller<br>
+- Send notification email to seller when someone buys their products<br>
+- Send review request to buyer<br>
+- Send review request reminder to buyer (retry [every week], maximum [2 times])<br>
+
+<br>
+## Restful route
+<hr>
+ /shops<br>
+ /shops/:shop_slug/products<br>
+ /shops/:shop_slug/products/:product_slug<br>

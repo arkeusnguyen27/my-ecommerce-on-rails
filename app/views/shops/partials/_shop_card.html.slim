@@ -1,5 +1,7 @@
 .card-wrapper
+  img.banner src='https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/shop-512.png'
   .title
     = link_to shop, shop
-  img.banner src= shop[:banner_url]
-  .description = shop[:description]
+  .date-joined
+    p from: #{shop[:created_at]}
+    

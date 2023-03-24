@@ -2,8 +2,47 @@
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  margin: 10px 20px 10px 20px;
 }
 
 .shop-card {
   flex: 1 1 33%;
+}
+
+.list-of-shop {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.card-wrapper {
+  text-align: center;
+}
+
+img.banner {
+  width: 200px;
+  background: lightblue;
+  border-radius: 10px;
+}
+
+.banner_text {
+  text-align: center;
+}
+
+.price::after {
+  content: "$ USD";
+}
+
+.price{
+  text-align: center;
+}
+
+.info-text a {
+  color: white;
+}
+
+.info-text a:hover {
+  color: white;
+  text-decoration: none;
 }

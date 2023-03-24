@@ -47,4 +47,7 @@ class SellerProductsController < DashboardSellerController
   def create_edit_form_path
     @path = seller_product_path
   end
+
+  def destroy
+  end
 end

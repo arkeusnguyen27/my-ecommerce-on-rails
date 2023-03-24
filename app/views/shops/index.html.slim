@@ -1,5 +1,7 @@
 
-h1 List of shops
+.banner_text
+  h1 Meet our merchants
 
-- @shops.each do |shop|
-  = render "shops/partials/shop_card", { shop: shop }
+.list-of-shop
+  - @shops.each do |shop|
+    = render "shops/partials/shop_card", { shop: shop }

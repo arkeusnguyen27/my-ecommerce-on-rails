@@ -38,7 +38,7 @@
           <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"nav-link" %>
         </li>
         <% if current_user.buyer? %>
-          <li class="nav-item" id='nav-cart'>
+          <li class="nav-item " id='nav-cart'><i class=""></i>
             <%= render 'layouts/navbars/nav_cart' %>
           </li>
         <% end %>
@@ -49,10 +49,7 @@
       <% end %>
 
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+
   </div>
 </nav>
 
