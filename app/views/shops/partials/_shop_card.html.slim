@@ -1,7 +1,9 @@
+
 .card-wrapper
-  img.banner src='https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/shop-512.png'
-  .title
-    = link_to shop, shop
-  .date-joined
-    p from: #{shop[:created_at]}
-    
+  = link_to shop
+      img.banner src='https://img.freepik.com/free-vector/shop-with-sign-we-are-open_23-2148547718.jpg?w=2000'
+      / using a static image because the function to upload store image is currently not working
+      .title
+        = link_to shop, shop
+      .date-joined
+        p from: #{shop[:created_at].strftime("%d-%m-%Y")}

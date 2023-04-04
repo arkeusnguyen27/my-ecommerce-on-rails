@@ -1,5 +1,7 @@
-#main
-  button.openbtn onclick='openNav()'
-  | ☰ Open Sidebar
-  h2 Seller content
+
+button.openbtn onclick='openNav()' ☰
+- if current_user.buyer?
+    h2 Buyer content
+- if current_user.seller?
+    h2 Seller content
 

@@ -18,4 +18,4 @@
     =< @cart.total
 
 - if @cart.can_checkout?
-  = link_to "Proceed", cart_path({confirmation: true}), class:'cart-check-out-button'
+  = link_to "Proceed to check out", cart_path({confirmation: true}), class:'cart-check-out-button'

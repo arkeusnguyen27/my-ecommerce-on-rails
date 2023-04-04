@@ -2,20 +2,30 @@
 
 
 
-button.openbtn onclick='openNav()'
-| ☰ Open Sidebar
+button.openbtn onclick='openNav()' ☰
+
+br
+br
+br
+
 h2 Seller Products
+
+button.btn#addproductbtn
+  = link_to "Add product", new_seller_product_path
+
+br
+br
 
 table.table
   thead
     tr
       th scope='col' id
       th scope='col' title
-      th scope='col' price
+      th scope='col' price $
       th scope='col'
       th scope='col'
       th scope='col'
-        button type='button' onclick='update_featured_products()'
+        button.btn.btn-success type='button' onclick='update_featured_products()'
           | Featured Products
   tbody
     - current_user.shop.products.each do |product|
@@ -23,10 +33,8 @@ table.table
         th scope='row' = product.id
         th = product.title
         th = product.price
-        th
-          .btn.btn-warning = link_to "Edit", edit_seller_product_path(product)
-        th
-          .btn.btn-danger = link_to "Delete", seller_product_path(product), method: :delete
+        th = link_to "Edit", edit_seller_product_path(product), class:"btn btn-warning "
+        th = link_to "Delete", seller_product_path(product), method: :delete, class:"btn btn-danger"
         th
           .input-group-text
             input type='checkbox' id="product_featured_checkbox_#{product.id}" onclick="handleCheckbox(#{product.id})" checked=product.featured

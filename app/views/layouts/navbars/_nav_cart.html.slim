@@ -1,2 +1,5 @@
-.nav-link.nav-cart.fa-thin.fa-star
-  = link_to current_user.cart.count_items, cart_path
+=link_to cart_path, class:"nav-cart"
+  span [style="margin-right: 5px"] your cart:
+  span
+    =< current_user.cart.count_items
+

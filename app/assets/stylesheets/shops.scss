@@ -13,15 +13,18 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   width: 90%;
+  grid-gap: 5px;
   margin: 0 auto;
 }
 
 .card-wrapper {
   text-align: center;
+  padding: 25px 10px 0px 10px;
+  position: relative;
 }
 
 img.banner {
-  width: 200px;
+  width: 250px;
   background: lightblue;
   border-radius: 10px;
 }
@@ -45,4 +48,33 @@ img.banner {
 .info-text a:hover {
   color: white;
   text-decoration: none;
+}
+
+.card-wrapper:before {
+  background: #E0EFDE;
+  content: "";
+  inset: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s ease-in-out;
+  z-index: -1;
+}
+
+.card-wrapper:hover:before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.title a {
+  text-decoration: none !important;
+}
+
+button#addproductbtn {
+  background: #CA7DF9;
+}
+
+button#addproductbtn a{
+  color: white;
+  text-decoration:  none;
 }

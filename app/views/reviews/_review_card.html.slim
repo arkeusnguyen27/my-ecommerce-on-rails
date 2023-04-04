@@ -4,7 +4,7 @@
       - review.rating.times do
         span.fa-solid.fa-star
       span.review-date[data-content = review.created_at]
-        = review.created_at
+        = review.created_at.strftime("%d-%m-%Y")
     span.reviewer-name 
       == review.user.name
   .card-body

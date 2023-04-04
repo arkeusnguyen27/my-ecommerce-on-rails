@@ -13,8 +13,11 @@
   .field
     = f.label :cover
     = f.file_field :cover
-   
-  </div>
+
+  .field
+    = f.label :price
+    = f.text_field :price, type:"number"
+
   .field
     = f.label :description
     = f.rich_text_area :description

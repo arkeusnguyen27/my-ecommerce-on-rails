@@ -12,7 +12,8 @@ class DashboardSellerController < DashboardController
 
   def is_shop_owner?
     # check if login shop == product.shop
-    unless @shop == @product.shop
+    product_id = Product.friendly.find(params[:id]).shop_id
+    unless @shop.id == product_id
       redirect_to dashboard_view_dashboard_index_url, notice: "You're not the owner of this product"
     end
   end
