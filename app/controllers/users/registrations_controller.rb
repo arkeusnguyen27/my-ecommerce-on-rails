@@ -47,7 +47,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
   def auto_create_shop
-    return unless resource.seller?
+    return unless resource.seller? && resource.email? && resource.password? && resource.password_confirmation?
 
     Shop.create(user: resource, name: resource.email.split("@").first)
     SellerMailer.with(user: resource).welcome_email.deliver_later
