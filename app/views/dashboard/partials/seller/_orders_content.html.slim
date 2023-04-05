@@ -14,10 +14,11 @@ table.table
       th scope='col' #
       th scope='col' buyer
       th scope='col' date ordered
-      th scope='col' action
+      
       th scope='col' number of products
       th scope='col' total quantity
       th scope='col' total amount
+      th scope='col' 
       / th scope='col'
       / th scope='col'
       /   button type='button' onclick='update_featured_products()'
@@ -28,10 +29,11 @@ table.table
         th scope='row' = order.id
         th = order.order.user.name
         th = order.created_at.strftime("%d-%m-%Y")
-        th = link_to "show", seller_orders_path(order.id), class:"btn btn-outline-primary"
+        
         th = order.total_line_items
         th = order.total_items
         th = order.total_amount
+        th = link_to "show", seller_orders_path(order.id), class:"btn btn-outline-primary"
         / th = link_to "Edit", edit_seller_product_path(product)
         / th Remove
         / th
