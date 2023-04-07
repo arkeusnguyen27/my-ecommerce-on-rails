@@ -10,9 +10,9 @@ button.btn.btn-light
 
     p
       - if @product.average_rating
-        strong This product has been bought #{@product.purchases_count} times with #{@product.average_rating} stars rating from #{@product.reviews_count} reviews
+        i This product has been bought #{@product.purchases_count} times with #{@product.average_rating} stars rating from #{@product.reviews_count} reviews
       - else
-        strong This product has been bought #{@product.purchases_count} times with #{@product.reviews_count} reviews
+        i This product has been bought #{@product.purchases_count} times with #{@product.reviews_count} reviews
 
 
     // - if @product.cover.attached?

@@ -5,7 +5,7 @@
 
 
 .products-section
-  h2 Products list
+  h4 Featured products
   .cards-wrapper
     - @products.each do |prod|
       = render "products/partials/product_card", { shop: @shop, product: prod }
