@@ -30,7 +30,8 @@ class DashboardController < ApplicationController
       @paths = [
         {name: 'Orders', path: 'orders'}
       ]
-      @view_template = params[:view_param].present? ? 'orders_content' : 'main_content'
+      # @view_template = params[:view_param].present? ? 'orders_content' : 'main_content' use this when buyer has more contents
+      @view_template = 'orders_content' #temporarily use this because buyer only has order content
       render 'buyer_dashboard'
     end
   end

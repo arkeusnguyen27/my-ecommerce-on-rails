@@ -1,8 +1,10 @@
 
 .cart-page__container
-  h1 Order Summary
-  table.cart-table
-    thead
+  h1
+    | Order #
+    = @order.id
+  table.cart-table.table.table-striped
+    thead.thead-dark
       tr
         th Name
         th Price

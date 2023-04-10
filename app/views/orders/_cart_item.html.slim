@@ -7,4 +7,4 @@ td
     = f.number_field :quantity, value: line_item.quantity
     = f.submit :update
 td = line_item.sub_total
-td.btn.btn-danger.p-1 = link_to "X", line_item_path(line_item.id), method: :delete, remote: true
+td = link_to "remove", line_item_path(line_item.id), method: :delete, remote: true, class:"btn btn-danger p-1"

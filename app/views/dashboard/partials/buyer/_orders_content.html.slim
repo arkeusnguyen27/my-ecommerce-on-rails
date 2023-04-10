@@ -7,11 +7,11 @@ br
 
 h2 Historical orders
 
-table.table
-  thead
+table.table.table-striped
+  thead.
     tr
-      th scope='col' #
-      th scope='col' Date
+      th scope='col' # Order ID
+      th scope='col' Date ordered
       th scope='col' Number of items
       th scope='col' Total
       th scope='col'
@@ -24,5 +24,5 @@ table.table
         th = order.count_items
         th
           => number_to_currency(order.total)
-        th = link_to "show", order_path(order.id)
+        th = link_to "see more", order_path(order.id), class:"btn btn-outline-primary"
 
