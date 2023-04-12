@@ -22,7 +22,6 @@ table.table.table-striped
         th = order.updated_at.strftime("%d-%m-%Y")
         / th = link_to "Edit", edit_seller_product_path(product)
         th = order.count_items
-        th
-          => number_to_currency(order.total)
+        th => number_to_currency(order.total).gsub(/\.00$/, "")
         th = link_to "see more", order_path(order.id), class:"btn btn-outline-primary"
 

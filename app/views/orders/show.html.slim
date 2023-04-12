@@ -14,13 +14,13 @@
     - @order.line_items.each do |line_item|
       tr
         td = link_to line_item.product.title, shop_product_path(line_item.product.shop, line_item.product)
-        td = line_item.price
+        td = number_to_currency(line_item.price).gsub(/\.00$/, "")
         td = line_item.quantity
-        td = line_item.sub_total
+        td = number_to_currency(line_item.sub_total).gsub(/\.00$/, "")
 
   h2
     | Total:
-    => @order.total
+    => number_to_currency(@order.total).gsub(/\.00$/, "")
 
 
 

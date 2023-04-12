@@ -11,12 +11,12 @@
     - @cart.line_items.each do |line_item|
       tr
         td = line_item.product.title
-        td = line_item.price
+        td = number_to_currency(line_item.price).gsub(/\.00$/, "")
         td = line_item.quantity
-        td = line_item.sub_total
+        td = number_to_currency(line_item.sub_total).gsub(/\.00$/, "")
   h2
     | Total:
-    => @cart.total
+    => number_to_currency(@cart.total).gsub(/\.00$/, "")
 
   .banner_text
     = link_to "Checkout", orders_path, method: :post, class:'cart-check-out-button btn btn-success'

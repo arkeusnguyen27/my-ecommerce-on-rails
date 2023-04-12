@@ -7,7 +7,7 @@
     .card-title style="text-align:center;"
       = product.title
   .price style="text-align:center;"
-    = product.price
+    = number_to_currency(product.price, locale: :en).gsub(/\.00$/, "")
   .btn.btn-info
     .info-text
       = link_to "See more", shop_product_path(shop, product), style: "width: 100%; display:block;"

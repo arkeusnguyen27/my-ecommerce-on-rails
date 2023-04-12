@@ -1,10 +1,10 @@
 td = line_item.id
 td = line_item.product.title
-td = line_item.price
+td = number_to_currency(line_item.price).gsub(/\.00$/, "")
 td = line_item.quantity
 td
   = form_for line_item, method: :put,  remote: true do |f|
     = f.number_field :quantity, value: line_item.quantity
     = f.submit :update
-td = line_item.sub_total
+td = number_to_currency(line_item.sub_total).gsub(/\.00$/, "")
 td = link_to "remove", line_item_path(line_item.id), method: :delete, remote: true, class:"btn btn-danger p-1"

@@ -1,6 +1,5 @@
 
-button.btn.btn-light 
-  =< link_to "<- Back to category page",  shop_path(@product.shop)
+=< link_to "<- Back to category page",  shop_path(@product.shop), class:"btn btn-light"
 .product-container
   .product-right
     img.card-img-top src="https://cdn3d.iconscout.com/3d/premium/thumb/product-5806313-4863042.png" style= "height: 300px; width: 100%; object-fit: contain;"
@@ -26,7 +25,7 @@ button.btn.btn-light
     p
       strong
         | Price:
-        =< @product.price
+        =< number_to_currency(@product.price).gsub(/\.00$/, "")
 
     = form_for :line_item, url: line_items_path, remote: true do |f|
       = f.number_field :quantity, min: 0, value: 1

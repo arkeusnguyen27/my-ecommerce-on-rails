@@ -29,6 +29,9 @@ class SellerOrder < ApplicationRecord
 
   end
 
+  def is_order_completed?(user)
+    self.where(buyer: user).where(order_id).exists? 
+  end
 
   def calculate_total_items
     #sum of  each_line_item * quantity

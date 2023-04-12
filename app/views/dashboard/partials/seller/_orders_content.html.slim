@@ -32,7 +32,7 @@ table.table.table-hover
         
         th = order.total_line_items
         th = order.total_items
-        th = order.total_amount
+        th = number_to_currency(order.total_amount, locale: :en).gsub(/\.00$/, "")
         th = link_to "show", seller_orders_path(order.id), class:"btn btn-outline-primary"
         / th = link_to "Edit", edit_seller_product_path(product)
         / th Remove

@@ -3,6 +3,8 @@
     .review-rating-star
       - review.rating.times do
         span.fa-solid.fa-star
+      - (5 - review.rating).times do
+        span.fa-regular.fa-star
       span.review-date[data-content = review.created_at]
         = review.created_at.strftime("%d-%m-%Y")
     span.reviewer-name 

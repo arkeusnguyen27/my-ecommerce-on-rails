@@ -15,7 +15,7 @@
       = render "cart", line_items: @cart.line_items
   h2#cart-total
     | Total:
-    =< @cart.total
+    =< number_to_currency(@cart.total).gsub(/\.00$/, "")
 
 - if @cart.can_checkout?
   .banner_text
