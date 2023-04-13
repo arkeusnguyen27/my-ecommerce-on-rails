@@ -8,4 +8,12 @@ class SellerOrdersController < ApplicationController
     render redirect_to root_url  unless @so.present?
   end
 
+  # just to update the sellerorder.status to be fulfilled at the moment
+  def update
+    so = SellerOrder.find_by(id: params[:id], shop: @shop)
+    if so.status != 'comnplete'
+      so.update_attribute(:status, 'completed')
+    end
+  end
+  
 end

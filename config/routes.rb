@@ -26,7 +26,8 @@ Rails.application.routes.draw do
     resources :products, only: [:show, :index, :edit, :update]
   end
 
-  resources :orders, only: [:create, :show]
+  resources :orders, only: [:create, :show, :update]
+
   get "/cart", to: 'orders#cart'
 
 
@@ -34,6 +35,8 @@ Rails.application.routes.draw do
   post '/reviews_by_email', to: 'reviews#create_by_email', as: 'reviews_by_email'
 
   get '/sellers/orders/:id', to: 'seller_orders#show', as: 'seller_orders'
+  resources :seller_orders, only: [:show, :update]
+
   get '/products', to: 'products#index'
   put '/api/toggle_featured_products', to: "dashboard#toggle_featured_products"
 end

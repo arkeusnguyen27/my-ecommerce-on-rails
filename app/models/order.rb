@@ -42,4 +42,14 @@ class Order < ApplicationRecord
   def total
     line_items.collect { |line_item| line_item.quantity * line_item.price }.sum
   end
+
+  def is_buyer_order_completed?
+
+    so = SellerOrder.find_by(order_id: line_items[0].order_id)
+    if so.status == 'completed' 
+      return true
+    end
+    return false
+
+  end
 end

@@ -14,6 +14,7 @@ table.table.table-striped
       th scope='col' Date ordered
       th scope='col' Number of items
       th scope='col' Total
+      th scope='col' Status
       th scope='col'
   tbody
     - current_user.orders.completed.each do |order|
@@ -23,5 +24,12 @@ table.table.table-striped
         / th = link_to "Edit", edit_seller_product_path(product)
         th = order.count_items
         th => number_to_currency(order.total).gsub(/\.00$/, "")
+        th
+          - if !order.is_buyer_order_completed?
+            span[style= "color:#E5D352"]
+              | in process
+          - if order.is_buyer_order_completed?
+            span[style="color:#84CAE7"]
+              | completed
         th = link_to "see more", order_path(order.id), class:"btn btn-outline-primary"
 

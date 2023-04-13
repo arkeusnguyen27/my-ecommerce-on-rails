@@ -15,6 +15,7 @@ class LineItemsController < ApplicationController
     redirect_to root_url and return unless current_user == line_item.order.user && line_item.order.status == 'cart'
 
     if line_item.delete
+      #line_item.price = line_item.price - line_item.delete.price
       @line_items = line_item.order.reload.line_items
     else
       render "error", error_message: "cannot delete item from cart"

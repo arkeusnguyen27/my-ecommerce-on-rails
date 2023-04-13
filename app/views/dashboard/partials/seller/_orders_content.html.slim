@@ -4,20 +4,20 @@ button.openbtn onclick='openNav()' ☰
 
 br
 br
-br
 
 h2 Customer orders
 
 table.table.table-hover
-  thead
+  thead.thead-light
     tr
       th scope='col' #
       th scope='col' buyer
       th scope='col' date ordered
-      
+      th scope='col' status
       th scope='col' number of products
       th scope='col' total quantity
       th scope='col' total cost
+      th scope='col' 
       th scope='col' 
       / th scope='col'
       / th scope='col'
@@ -29,11 +29,20 @@ table.table.table-hover
         th scope='row' = order.id
         th = order.order.user.name
         th = order.created_at.strftime("%d-%m-%Y")
-        
+        th 
+          - if order.status == "completed"
+            span[style="color:#84CAE7"]
+              = order.status
+          - if order.status == nil
+            span[style= "color:#E5D352"]
+              | pending
         th = order.total_line_items
         th = order.total_items
         th = number_to_currency(order.total_amount, locale: :en).gsub(/\.00$/, "")
         th = link_to "show", seller_orders_path(order.id), class:"btn btn-outline-primary"
+        th 
+          - if order.status == nil
+            = link_to "fulfill", seller_order_path(order.id), method: :put, class:"btn btn-success", style:"color: white"
         / th = link_to "Edit", edit_seller_product_path(product)
         / th Remove
         / th

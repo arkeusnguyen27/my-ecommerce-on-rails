@@ -43,7 +43,14 @@ class Product < ApplicationRecord
   end
 
   def has_bought_and_not_reviewed_by?(user)
-    line_items.where(buyer: user).where(reviewed_at: nil).exists?
+    if line_items.where(buyer: user).where(reviewed_at: nil).exists?
+      line_item_order_id = line_items.find_by(buyer: user).order_id
+      so = SellerOrder.find_by(order_id: line_item_order_id)
+      if !so.nil? && so.staus == 'completed'
+        return true
+      end
+    end
+    return false
   end
 
   def self.selling_products
