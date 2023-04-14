@@ -30,7 +30,7 @@
     = form_for :line_item, url: line_items_path, remote: true do |f|
       = f.number_field :quantity, min: 0, value: 1
       = f.number_field :product_id, hidden: true, value: @product.id
-      = f.submit "Add to cart"
+      = f.submit "Add to cart", id: "add-to-cart"
 
 // if buyer already bought this product, show review form
 - if @product.has_bought_and_not_reviewed_by?(current_user)
@@ -59,4 +59,37 @@
     h2 Discover what people feel for this product
     - @product.completed_reviews.each do |review|
       = render "reviews/review_card", review: review
-      
+
+
+script
+  | document.getElementById("add-to-cart").addEventListener("click", function(){
+    document.getElementById("number_of_item").innerText = parseInt(document.getElementById("number_of_item").innerText) +
+    parseInt(document.getElementById("line_item_quantity").value);
+    })
+    function changeStar() {
+        var emptystar = 5 - this.value;
+        var block = document.querySelectorAll('i.fa-star');
+
+        // case: click 5 -> fulfill all
+        if(emptystar == 0){
+            for (let index = 0; index < 5; index++) {
+                block[index].classList.replace('fa-regular','fa-solid');
+            }
+        }
+        else{
+          // case: first click 1 - 4 star
+            // first loop to fulfill 
+            for (let index = 0; index < this.value; index++) {
+                block[index].classList.replace('fa-regular','fa-solid');
+            }
+            // second loop to empty
+            for (let index = this.value ; index < 5; index++) {
+                block[index].classList.replace('fa-solid','fa-regular');
+                console.log("close" + index);
+            }
+          }
+        }
+        if(document.querySelector("#review_rating")){
+          var select = document.querySelector("#review_rating");
+          select.addEventListener('change', changeStar, false);
+        }
