@@ -15,12 +15,15 @@ class DashboardController < ApplicationController
       @paths = [
         {name: 'Products', path: 'products'},
         {name: 'Orders', path: 'orders'},
+        {name: 'My Blogs', path: 'blogs'},
       ]
       case params[:view_param]
       when 'products'
         @view_template = 'products_content'
       when 'orders'
         @view_template = 'orders_content'
+      when 'blogs'
+        @view_template = 'blogs_content'
       else
         @view_template = 'main_content'
       end
@@ -28,10 +31,19 @@ class DashboardController < ApplicationController
       render 'seller_dashboard'
     else
       @paths = [
-        {name: 'Orders', path: 'orders'}
+        {name: 'Orders', path: 'orders'},
+        {name: 'My Blogs', path: 'blogs'},
       ]
-      # @view_template = params[:view_param].present? ? 'orders_content' : 'main_content' use this when buyer has more contents
-      @view_template = 'orders_content' #temporarily use this because buyer only has order content
+
+      case params[:view_param]
+      when 'orders'
+        @view_template = 'orders_content'
+      when 'blogs'
+        @view_template = 'blogs_content'
+      else
+        @view_template = 'main_content'
+      end
+      
       render 'buyer_dashboard'
     end
   end

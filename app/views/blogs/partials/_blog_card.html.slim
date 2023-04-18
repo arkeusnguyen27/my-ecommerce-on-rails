@@ -1,9 +1,38 @@
-.card.shop-card style="width: 18rem;"
-  / - if product.cover.attached?
-  /   = image_tag product.cover, class:"card-img-top", style: "height: 100%; width: 100%; object-fit: contain"
-  img.card-img-top src="https://cdn3d.iconscout.com/3d/premium/thumb/product-5806313-4863042.png" style= "height: 300px; width: 100%; object-fit: contain;"
-  .card-body
-    .card-title style="text-align:center;"
-      = blog.title
-  p
-    = blog.content
+/.blog-container [style="display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 20px 10px 20px;"]
+/  .blog-card [style="margin: 10px; background-color: #fff; border-radius: 10px; box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2); overflow: hidden; width: 300px;"]
+/    .blog-card-header
+/      img src='https://c0.wallpaperflare.com/preview/483/210/436/car-green-4x4-jeep.jpg' alt='rover' style="width: 100%; height: 200px; object-fit: cover;"
+/    .blog-card-body [style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 20px; min-height: 250px;"]
+/      h4
+/        = blog.title
+/      p [style="font-size: 13px;"]
+/        = blog.content
+/      .blog-user [style="display: flex; margin-top: auto;"]
+/        img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" style="border-radius: 50%; width: 40px; height: 40px; margin-right: 10px;"
+/        .blog-user-info[style="display: flex; align-items: center;"]
+/          small [style="margin: 0; color: #545d7a;"]
+/            = blog.created_at.strftime("%d-%m-%Y")
+
+.container.mt-5
+  .row
+    .col-12
+      article.blog-card
+        .blog-card__background
+          .card__background--wrapper
+            .card__background--main[style="background-image: url('http://demo.yolotheme.com/html/motor/images/demo/demo_131.jpg');"]
+              .card__background--layer
+        .blog-card__head
+          span.date__box
+            = blog.created_at.strftime("%d-%m-%Y")
+        .blog-card__info
+          h5
+            = blog.title
+          p
+            a.icon-link.mr-3
+              i.fa.fa-pencil-square-o
+                = blog.user_id
+            a.icon-link
+              i.fa.fa-comments-o
+          = blog.content
+          = link_to "read more", blog_path(blog.id), class:"btn btn--with-icon btn-info", style:"color: white;"
+            

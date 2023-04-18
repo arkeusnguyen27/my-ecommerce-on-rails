@@ -1,23 +1,15 @@
 = javascript_pack_tag 'dashboard/seller_update_featured_products'
 
-
-
 button.openbtn onclick='openNav()' ☰
 
-br
-br
-br
+div[style="display:flex;"]
+  h2 Seller Products
 
-h2 Seller Products
-
-button.btn#addproductbtn
-  = link_to "Add product", new_seller_product_path
-
-br
-br
+  button.btn#addproductbtn
+    = link_to "Add product", new_seller_product_path
 
 table.table.table-hover
-  thead
+  thead.thead-light
     tr
       th scope='col' id
       th scope='col' title

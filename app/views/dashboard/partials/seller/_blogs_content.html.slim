@@ -1,0 +1,21 @@
+button.openbtn onclick='openNav()' ☰
+
+h2
+  | My blogs
+table.table.table-hover
+  thead.thead-light
+    tr
+      th scope='col' #
+      th scope='col' title
+      th scope='col' content
+      th scope='col' date published
+      th
+  tbody
+    - current_user.blogs.each do |blog|
+      tr
+        th scope='row' = blog.id
+        th = blog.title
+        th = blog.content
+        th = blog.created_at.strftime("%d-%m-%Y")
+        th
+          = link_to "read more", blog_path(blog.id), class:"btn btn-success", style:"color: white"
