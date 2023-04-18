@@ -85,6 +85,15 @@ class Product < ApplicationRecord
     self.reviews_count = line_items.where(reviewed_at: nil).count
     self.save
   end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["cover_attachment", "cover_blob", "line_items", "rich_text_description", "shop"]
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["average_rating", "created_at", "description", "featured", "id", "price", "purchases_count", "reviews_count", "shop_id", "slug", "title", "updated_at"]
+  end
+  
 end
 
 

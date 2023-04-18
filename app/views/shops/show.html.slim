@@ -3,9 +3,11 @@
   img.banner src= @shop[:banner_url]
   .description = @shop[:description]
 
-
-.products-section
-  h4 Featured products
-  .cards-wrapper
-    - @products.each do |prod|
-      = render "products/partials/product_card", { shop: @shop, product: prod }
+- if @products.count == 0
+  img style="display: block; margin-left: auto; margin-right: auto; width: 50%; opacity: 10%;" src="https://preview.redd.it/oiusqopzyw921.png?auto=webp&s=161acb5216d5fd660e66cce29e7e0845cb16fc3d"
+- if @products.count > 0
+  .products-section
+    h4 Featured products
+    .cards-wrapper
+      - @products.each do |prod|
+        = render "products/partials/product_card", { shop: @shop, product: prod }

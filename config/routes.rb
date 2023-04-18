@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   get "/cart", to: 'orders#cart'
 
+  resources :blogs
 
   resources :reviews, only: [:create]
   post '/reviews_by_email', to: 'reviews#create_by_email', as: 'reviews_by_email'

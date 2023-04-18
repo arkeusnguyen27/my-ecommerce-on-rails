@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :reviews
   has_many :line_items, foreign_key: :buyer_id
-
+  has_many :blogs
   def cart
     orders.find_or_create_by(status: 'cart')
   end

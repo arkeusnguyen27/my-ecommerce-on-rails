@@ -1,0 +1,7 @@
+
+.banner_text
+  h1 Read our awesome user's blog
+
+.list-of-blogs
+  - @blogs.each do |blog|
+    = render "blogs/partials/blog_card", { blog: blog }

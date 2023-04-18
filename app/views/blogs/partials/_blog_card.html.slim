@@ -1,0 +1,9 @@
+.card.shop-card style="width: 18rem;"
+  / - if product.cover.attached?
+  /   = image_tag product.cover, class:"card-img-top", style: "height: 100%; width: 100%; object-fit: contain"
+  img.card-img-top src="https://cdn3d.iconscout.com/3d/premium/thumb/product-5806313-4863042.png" style= "height: 300px; width: 100%; object-fit: contain;"
+  .card-body
+    .card-title style="text-align:center;"
+      = blog.title
+  p
+    = blog.content
