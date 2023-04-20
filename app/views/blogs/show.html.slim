@@ -1,0 +1,61 @@
+
+<br>
+<br>
+.container
+  .title-container
+    .author-and-date
+      p == @blog.get_user_name
+      p == @blog.updated_at.strftime("%d-%m-%Y")
+    h1 == @blog.title
+    .social-icon-container
+      img.social-icon src="https://assets.website-files.com/5e95a087e75195080e304ab1/5eac081a7128cf4a5e8a5d28_social-media%20(2).svg"
+      img.social-icon src="https://assets.website-files.com/5e95a087e75195080e304ab1/5eac0772bc104703366c466a_social-media.svg"
+      img.social-icon src="https://assets.website-files.com/5e95a087e75195080e304ab1/5eac07cf23d8e2581d0f126c_social-media%20(1).svg"
+  .banner-container
+  .blog-content-container
+    = @blog.content
+
+style
+  |
+    .author-and-date {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .title-container {
+        text-align: center;
+    }
+
+
+    .social-icon{
+      max-height: 20px;
+      max-width: 20px;
+      opacity: .68;
+      margin-left: 10px;
+      margin-right: 10px;
+      padding-left: 0;
+      transition: opacity .35s;
+    }
+    .social-icon-container{
+      display: inline-flex;
+    }
+
+    .banner-container{
+      height: 500px;
+      background-image: url(http://demo.yolotheme.com/html/motor/images/demo/demo_131.jpg);
+      background-position: 50%;
+      background-size: cover;
+      margin-top: 0;
+      margin-left: 0;
+      margin-right: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left: 0;
+    }
+    .blog-content-container{
+      margin-top: 0;
+      padding-top: 36px;
+      padding-bottom: 0;
+      font-family: Lora, sans-serif;
+      text-align: center;
+    }

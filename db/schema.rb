@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2023_04_17_033356) do
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_blogs_on_user_id", unique: true
+    t.index ["user_id"], name: "index_blogs_on_user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -193,7 +193,6 @@ ActiveRecord::Schema.define(version: 2023_04_17_033356) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "blogs", "users"
   add_foreign_key "line_items", "users", column: "buyer_id"
   add_foreign_key "products", "shops"
   add_foreign_key "seller_line_items", "users", column: "buyer_id"

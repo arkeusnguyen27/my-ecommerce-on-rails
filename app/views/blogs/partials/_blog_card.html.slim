@@ -1,3 +1,4 @@
+/ can be reuse for smaller card blog
 /.blog-container [style="display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 20px 10px 20px;"]
 /  .blog-card [style="margin: 10px; background-color: #fff; border-radius: 10px; box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2); overflow: hidden; width: 300px;"]
 /    .blog-card-header
@@ -25,14 +26,32 @@
           span.date__box
             = blog.created_at.strftime("%d-%m-%Y")
         .blog-card__info
-          h5
-            = blog.title
           p
             a.icon-link.mr-3
               i.fa.fa-pencil-square-o
-                = blog.user_id
+                = blog.get_user_name
+          h5 = blog.title
             a.icon-link
               i.fa.fa-comments-o
           = blog.content
-          = link_to "read more", blog_path(blog.id), class:"btn btn--with-icon btn-info", style:"color: white;"
-            
+          = link_to "read more", blog_path(blog.id), class:"hover-4"
+
+style
+  | .hover-4 {
+        border: 8px solid;
+        border-image: repeating-linear-gradient(135deg,#F8CA00 0 10px,#E97F02 0 20px,#BD1550 0 30px) 8;
+        -webkit-mask: 
+          conic-gradient(from 180deg at top 8px right 8px, #0000 90deg,#000 0)
+          var(--_i,200%) 0  /200% var(--_i,8px) border-box no-repeat,
+          conic-gradient(at bottom 8px left  8px,  #0000 90deg,#000 0)
+          0   var(--_i,200%)/var(--_i,8px) 200% border-box no-repeat,
+          linear-gradient(#000 0 0) padding-box no-repeat;
+        transition: .3s, -webkit-mask-position .3s .3s;
+        float: right;
+        margin-top: -20px;
+      }
+      .hover-4:hover {
+        --_i: 100%;
+        color: #CC333F;
+        transition: .3s, -webkit-mask-size .3s .3s;
+      }

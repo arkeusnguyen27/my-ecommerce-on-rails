@@ -3,7 +3,7 @@ class CreateBlog < ActiveRecord::Migration[6.1]
     create_table :blogs do |t|
       t.string :title
       t.text :content
-      t.belongs_to :user, index: { unique: true }, foreign_key: true
+      t.belongs_to :user
 
       t.timestamps
     end

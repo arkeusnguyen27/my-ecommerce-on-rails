@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :products, only: [:new, :create, :edit, :update, :destroy], controller: 'seller_products', as: 'seller_products'
       # resources :orders, only: [:new, :create, :edit], controller: 'seller_orders'
       get ':view_param', to: 'dashboard#index', as: "dashboard_view"
+      resources :blogs,  only: [:index, :new, :create, :edit, :update, :destroy], controller: 'user_blog', as: 'user_blog'
     end
   end  
   root "home#landing"

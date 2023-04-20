@@ -1,7 +1,10 @@
 button.openbtn onclick='openNav()' ☰
 
-h2
-  | My blogs
+div[style="display:flex;"]
+  h2
+    | My blogs
+  button.btn#addproductbtn
+    = link_to "Add blog", new_user_blog_path
 table.table.table-hover
   thead.thead-light
     tr
