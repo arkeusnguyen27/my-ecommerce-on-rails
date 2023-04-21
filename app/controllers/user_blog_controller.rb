@@ -24,9 +24,11 @@ class UserBlogController < ApplicationController
 
   def edit
     @path = user_blog_path
+    @blog = Blog.find(params[:id])
   end
 
   def update
+    @blog = Blog.find(params[:id])
     respond_to do |format|
       if @blog.update(blog_params)
         format.html { redirect_to user_blog_index_path, notice: "Blog was successfully updated." }
@@ -49,4 +51,10 @@ class UserBlogController < ApplicationController
 
   def destroy
   end
+
+  private
+    def blog_params
+      params.require(:blog).permit(:title, :content)
+      #Blog.find(params[:id])
+    end
 end

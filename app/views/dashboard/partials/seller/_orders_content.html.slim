@@ -41,7 +41,3 @@ table.table.table-hover
         th 
           - if order.status == nil
             = link_to "fulfill", seller_order_path(order.id), method: :put, class:"btn btn-success", style:"color: white"
-        / th = link_to "Edit", edit_seller_product_path(product)
-        / th Remove
-        / th
-        /   input type='checkbox' id="product_featured_checkbox_#{product.id}" onclick="handleCheckbox(#{product.id})" checked=product.featured

@@ -26,15 +26,17 @@
           span.date__box
             = blog.created_at.strftime("%d-%m-%Y")
         .blog-card__info
-          p
+          span[style="display: flex; justify-content: space-between;"]
             a.icon-link.mr-3
               i.fa.fa-pencil-square-o
                 = blog.get_user_name
+            i.fa.fa-eye
+                
           h5 = blog.title
-            a.icon-link
-              i.fa.fa-comments-o
+          
           = blog.content
-          = link_to "read more", blog_path(blog.id), class:"hover-4"
+          div[style="text-align:center; margin-top: 20px;"]
+            = link_to "read more", blog_path(blog.id), class:"hover-4", style:"background:#1C7293;text-decoration:none;color: white;padding: 10px;"
 
 style
   | .hover-4 {
@@ -47,11 +49,16 @@ style
           0   var(--_i,200%)/var(--_i,8px) 200% border-box no-repeat,
           linear-gradient(#000 0 0) padding-box no-repeat;
         transition: .3s, -webkit-mask-position .3s .3s;
-        float: right;
         margin-top: -20px;
+        
       }
       .hover-4:hover {
         --_i: 100%;
         color: #CC333F;
         transition: .3s, -webkit-mask-size .3s .3s;
+      }
+      .trix-content {
+          max-height: 250px;
+          white-space: pre-line;
+          overflow: hidden;
       }
