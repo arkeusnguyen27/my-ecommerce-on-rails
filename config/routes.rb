@@ -41,4 +41,5 @@ Rails.application.routes.draw do
 
   get '/products', to: 'products#index'
   put '/api/toggle_featured_products', to: "dashboard#toggle_featured_products"
+  put '/api/increase_view_count', to: "blogs#increase_view_count"
 end

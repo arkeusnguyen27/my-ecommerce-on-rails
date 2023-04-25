@@ -4,3 +4,21 @@
 .list-of-blogs
   - @blogs.each do |blog|
     = render "blogs/partials/blog_card", { blog: blog }
+
+script
+  |window.update_view_count = function (current_blog_id) {
+      let data = {
+       current_blog_id,
+      }
+      console.log(data)
+      let JsonData = JSON.stringify(data)
+      console.log(JsonData)
+      window.fetch('/api/increase_view_count', {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JsonData
+      })
+      alert('okay')
+    }

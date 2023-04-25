@@ -21,8 +21,7 @@ table.table.table-hover
         th = blog.title
         th = blog.content
         th = blog.created_at.strftime("%d-%m-%Y")
-        th
-          = link_to "read more", blog_path(blog.id), class:"btn btn-success", style:"color: white"
+        th = link_to "read more", blog_path(blog.id), class:"btn btn-success", style:"color: white"
         th = link_to "edit blog", edit_user_blog_path(blog), class:"btn btn-warning"
 
 style

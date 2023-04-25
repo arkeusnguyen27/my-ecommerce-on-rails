@@ -17,10 +17,7 @@ table.table.table-hover
       th scope='col' total cost
       th scope='col' 
       th scope='col' 
-      / th scope='col'
-      / th scope='col'
-      /   button type='button' onclick='update_featured_products()'
-      /     | Featured Products
+
   tbody
     - current_user.shop.seller_orders.each do |order|
       tr

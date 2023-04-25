@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  
     def new
       @blog = Blog.new
     end
@@ -31,7 +32,7 @@ class BlogsController < ApplicationController
     def edit
 
     end
-    
+
     def update
       respond_to do |format|
         if @blog.update(blog_params)
@@ -43,11 +44,20 @@ class BlogsController < ApplicationController
         end
       end
     end
-  
+
+    def increase_view_count
+      binding.pry
+      @blog = Blog.find(params[:id])
+     
+      @blog.update_attribute(:view_count, @blog.view_count + 1)
+      render json: {
+        status: 'ok'
+      }
+    end
+
     private
     def blog_params
       params.require(:blog).permit(:title, :content)
-      #Blog.find(params[:id])
     end
   end
   

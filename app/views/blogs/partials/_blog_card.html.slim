@@ -31,12 +31,14 @@
               i.fa.fa-pencil-square-o
                 = blog.get_user_name
             i.fa.fa-eye
-                
+                =< blog.view_count
           h5 = blog.title
           
           = blog.content
           div[style="text-align:center; margin-top: 20px;"]
-            = link_to "read more", blog_path(blog.id), class:"hover-4", style:"background:#1C7293;text-decoration:none;color: white;padding: 10px;"
+            = link_to blog_path(blog.id)
+              button.hover-4[style="background:#1C7293;text-decoration:none;color: white;padding: 10px;" onclick="update_view_count(#{blog.id})"]
+                | read more
 
 style
   | .hover-4 {
