@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   
+  skip_forgery_protection
     def new
       @blog = Blog.new
     end
@@ -46,10 +47,8 @@ class BlogsController < ApplicationController
     end
 
     def increase_view_count
-      binding.pry
-      @blog = Blog.find(params[:id])
-     
-      @blog.update_attribute(:view_count, @blog.view_count + 1)
+      blog = Blog.find(params[:id])
+      blog.update_attribute(:view_count, blog.view_count + 1)
       render json: {
         status: 'ok'
       }

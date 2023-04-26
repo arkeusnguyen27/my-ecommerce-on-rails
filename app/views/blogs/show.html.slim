@@ -1,7 +1,7 @@
 
 <br>
 <br>
-.container
+.container[blog-id="#{@blog.id}"]
   .title-container
     .author-and-date
       p == @blog.get_user_name
@@ -59,4 +59,21 @@ style
       font-family: Lora, sans-serif;
     }
 
-    
+script
+  |setTimeout(function() {
+    let current_blog_id = parseInt(document.querySelector(".container").getAttribute("blog-id"));
+      let data = {
+       id: current_blog_id,
+      }
+      console.log(data)
+      let JsonData = JSON.stringify(data)
+      console.log(JsonData)
+      fetch('/api/increase_view_count', {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JsonData
+      })
+      console.log("done 1 view")
+    }, 10000);
