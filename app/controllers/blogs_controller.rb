@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
-  
-  skip_forgery_protection
+
+  skip_before_action :verify_authenticity_token, only: [:increase_view_count]
     def new
       @blog = Blog.new
     end

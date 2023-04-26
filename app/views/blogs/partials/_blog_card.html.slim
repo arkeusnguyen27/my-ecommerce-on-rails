@@ -30,8 +30,11 @@
             a.icon-link.mr-3
               i.fa.fa-pencil-square-o
                 = blog.get_user_name
-            i.fa.fa-eye
+            span 
+              i.fa.fa-eye
                 =< blog.view_count
+              i.fa.fa-comment
+                =< blog.get_number_of_all_comments
           h5 = blog.title
           
           = blog.content

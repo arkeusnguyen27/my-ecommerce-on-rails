@@ -1,0 +1,9 @@
+.card
+  .card-header[style="display: flex; justify-content: space-between;"]
+    span.reviewer-name 
+      = comment.user.name
+    span.review-date[data-content = comment.created_at]
+      = comment.created_at.strftime("%d-%m-%Y")
+  .card-body
+    p.comment-body
+      = comment.content
