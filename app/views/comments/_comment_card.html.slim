@@ -5,5 +5,15 @@
     span.review-date[data-content = comment.created_at]
       = comment.created_at.strftime("%d-%m-%Y")
   .card-body
-    p.comment-body
-      = comment.content
+    = comment.content
+    - if comment.user == current_user
+      div.edit-form-container
+        button.btn.btn-warning[onclick="comment_form_btn(#{comment.id})"]
+          i.fa.fa-edit
+            |edit
+
+        div.comment-edit-form[comment-form-id="#{comment.id}" style="display:none;"]
+          = render "comments/form", blog: @blog
+    button.btn.btn-dark
+      i.fa.fa-reply
+        |reply

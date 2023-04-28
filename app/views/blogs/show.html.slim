@@ -18,15 +18,10 @@
 .reviews-container
     - if current_user.present?
       h2 Leave a comment for this blog
-      .form-wrapper
-        = form_for :comment, url: comments_path, method: :post do |f|
-          .field
-            = f.number_field :blog_id, hidden: true, value: @blog.id
-            = f.rich_text_area :content
-          .actions = f.submit
+      = render "comments/form", blog: @blog
 
     - @blog.get_all_comments.each do |comment|
-      = render "comments/comment_card", comment: comment
+      = render "comments/comment_card", comment: comment, blog: @blog
 style
   |
     .author-and-date {
@@ -70,6 +65,9 @@ style
       padding-bottom: 0;
       font-family: Lora, sans-serif;
     }
+    .not-active{
+      display: none;
+    }
 
 script
   |setTimeout(function() {
@@ -86,3 +84,10 @@ script
         body: JsonData
       })
     }, 10000);
+    function comment_form_btn(comment_id){
+      if(document.querySelector(`.comment-edit-form[comment-form-id="${comment_id}"]`).style.display == "none"){
+        document.querySelector(`.comment-edit-form[comment-form-id="${comment_id}"]`).style.display = "block";
+      }else{
+        document.querySelector(`.comment-edit-form[comment-form-id="${comment_id}"]`).style.display = "none";
+      }
+    };

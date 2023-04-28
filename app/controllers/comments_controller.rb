@@ -5,9 +5,10 @@ class CommentsController < ApplicationController
     end
 
     def create
+      #binding.pry
       @comment = Comment.new(comment_params.merge(user: current_user, blog: @blog))
       @comment.blog_id = comment_params[:blog_id]
-
+      
       if comment_params[:content].present?
         respond_to do |format|
           if @comment.save
@@ -22,26 +23,18 @@ class CommentsController < ApplicationController
       end
     end
 
-    def index
-      @blogs = Blog.all
-    end
-  
-    def show
-      @blog = Blog.find(params[:id]) or not_found
-    end
-
     def edit
-
+      @comment = Comment.find(params[:id])
     end
 
     def update
       respond_to do |format|
-        if @blog.update(blog_params)
-          format.html { redirect_to user_blog_index_path, notice: "Blog was successfully updated." }
-          format.json { render :show, status: :ok, location: @blog }
+        if @comment.update(comment_params)
+          format.html { redirect_to user_blog_index_path, notice: "Comment was successfully updated." }
+          format.json { render :show, status: :ok, location: @comment }
         else
           format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @blog.errors, status: :unprocessable_entity }
+          format.json { render json: @comment.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -49,7 +42,7 @@ class CommentsController < ApplicationController
 
     private
     def comment_params
-      params.require(:comment).permit(:content, :blog_id)
+      params.require(:comment).permit(:blog_id, :content)
     end
   end
   
