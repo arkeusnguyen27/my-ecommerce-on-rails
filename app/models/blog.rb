@@ -15,5 +15,9 @@ class Blog < ApplicationRecord
    def get_number_of_all_comments
       comments.count
    end
+
+   def self.ransackable_attributes(auth_object = nil)
+      ["content", "created_at", "id", "title", "updated_at", "user_id", "view_count"]
+   end
 end
   

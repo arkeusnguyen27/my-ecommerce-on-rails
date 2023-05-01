@@ -29,9 +29,9 @@ class RepliesController < ApplicationController
 
   def update
     #binding.pry
-    @reply = Reply.find(params[:comment][:comment_id])
+    @reply = Reply.find(params[:reply][:reply_id])
     respond_to do |format|
-      if @comment.update(comment_params)
+      if @reply.update(reply_params)
         format.html { redirect_to blog_path, notice: "Reply was successfully updated." }
         format.json { render :show, status: :ok, location: @reply }
       else

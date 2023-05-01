@@ -3,5 +3,5 @@
     field
       = f.number_field :comment_id, hidden: true, value: comment.id
       = f.number_field :blog_id, hidden: true, value: blog.id
-      = f.rich_text_area :content
+      = f.rich_text_area :content, placeholder: "edit the comment"
     .actions = f.submit

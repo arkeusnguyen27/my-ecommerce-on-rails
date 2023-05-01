@@ -5,7 +5,7 @@
   .title-container
     .author-and-date
       p == @blog.get_user_name
-      p == @blog.updated_at.strftime("%d-%m-%Y")
+      p == @blog.created_at.strftime("%d-%m-%Y")
     h1 == @blog.title
     .social-icon-container
       img.social-icon src="https://assets.website-files.com/5e95a087e75195080e304ab1/5eac081a7128cf4a5e8a5d28_social-media%20(2).svg"

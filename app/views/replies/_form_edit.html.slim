@@ -1,0 +1,7 @@
+.form-wrapper
+  = form_for :reply, url: reply_path, method: :put do |f|
+    field
+      = f.number_field :comment_id, hidden: true, value: comment.id
+      = f.number_field :reply_id, hidden: true, value: reply.id
+      = f.rich_text_area :content, placeholder: "edit the reply"
+    .actions = f.submit

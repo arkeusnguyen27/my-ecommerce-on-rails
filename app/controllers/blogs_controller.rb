@@ -23,7 +23,9 @@ class BlogsController < ApplicationController
     end
 
     def index
-      @blogs = Blog.all
+      #@blogs = Blog.all
+      @q = Blog.ransack(params[:q])
+      @blogs = @q.result(distinct: true)
     end
   
     def show
@@ -52,6 +54,10 @@ class BlogsController < ApplicationController
       render json: {
         status: 'ok'
       }
+    end
+
+    def sort
+      
     end
 
     private

@@ -20,9 +20,9 @@
           div.comment-edit-form[comment-form-id="#{comment.id}" style="display:none;"]
             = render "comments/form_edit", blog: @blog, comment: comment
         div.reply-submit-form[reply-form-id="#{comment.id}" style="display:none;"]
-          = render "replies/form", comment: comment
+          = render "replies/form_create", comment: comment
 
   - if comment.get_all_replies.count > 0
-    .card-footer[style="border-left: 2px solid black;padding-left: 30px;"]
+    .card-footer[style="border-left: 5px solid black;padding-left: 30px;"]
       - comment.get_all_replies.each do |reply|
-        = render "replies/card", reply: reply, comment: comment
+        = render "replies/reply_card", reply: reply, comment: comment
