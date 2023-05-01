@@ -18,7 +18,7 @@
 .reviews-container
     - if current_user.present?
       h2 Leave a comment for this blog
-      = render "comments/form", blog: @blog
+      = render "comments/form_create", blog: @blog
 
     - @blog.get_all_comments.each do |comment|
       = render "comments/comment_card", comment: comment, blog: @blog

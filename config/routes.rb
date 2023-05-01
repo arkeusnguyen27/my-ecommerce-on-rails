@@ -34,10 +34,6 @@ Rails.application.routes.draw do
   resources :blogs
   resources :comments
 
-  resources :blogs, only: [:show] do
-    resources :comments,  only: [:index, :new, :create, :edit, :update, :destroy], controller: 'user_blog_comment', as: 'user_blog_comment'
-  end
-
   resources :reviews, only: [:create]
   post '/reviews_by_email', to: 'reviews#create_by_email', as: 'reviews_by_email'
 

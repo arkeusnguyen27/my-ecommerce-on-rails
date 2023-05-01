@@ -13,7 +13,7 @@
             |edit
 
         div.comment-edit-form[comment-form-id="#{comment.id}" style="display:none;"]
-          = render "comments/form", blog: @blog
+          = render "comments/form_edit", blog: @blog, comment: comment
     button.btn.btn-dark
       i.fa.fa-reply
         |reply
