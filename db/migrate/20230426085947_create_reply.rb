@@ -3,7 +3,7 @@ class CreateReply < ActiveRecord::Migration[6.1]
     create_table :replies do |t|
       t.text :content
       t.belongs_to :user
-      t.belongs_to :blog
+      t.belongs_to :comment
 
       t.timestamps
     end

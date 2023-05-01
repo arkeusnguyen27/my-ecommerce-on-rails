@@ -3,17 +3,26 @@
     span.reviewer-name 
       = comment.user.name
     span.review-date[data-content = comment.created_at]
-      = comment.created_at.strftime("%d-%m-%Y")
+      = comment.updated_at.strftime("%d-%m-%Y")
   .card-body
     = comment.content
-    - if comment.user == current_user
-      div.edit-form-container
-        button.btn.btn-warning[onclick="comment_form_btn(#{comment.id})"]
-          i.fa.fa-edit
-            |edit
+    div.edit-form-container
+      div.button-container[style="text-align: right;"]
+          - if comment.user == current_user
+            button.btn.btn-warning[onclick="comment_form_btn(#{comment.id})"]
+              i.fa.fa-edit
+                |edit
+          button.btn.btn-dark[onclick="reply_form_btn(#{comment.id})"]
+            i.fa.fa-reply
+              |reply
+      div.form-container
+        - if comment.user == current_user
+          div.comment-edit-form[comment-form-id="#{comment.id}" style="display:none;"]
+            = render "comments/form_edit", blog: @blog, comment: comment
+        div.reply-submit-form[reply-form-id="#{comment.id}" style="display:none;"]
+          = render "replies/form", comment: comment
 
-        div.comment-edit-form[comment-form-id="#{comment.id}" style="display:none;"]
-          = render "comments/form_edit", blog: @blog, comment: comment
-    button.btn.btn-dark
-      i.fa.fa-reply
-        |reply
+  - if comment.get_all_replies.count > 0
+    .card-footer[style="border-left: 2px solid black;padding-left: 30px;"]
+      - comment.get_all_replies.each do |reply|
+        = render "replies/card", reply: reply, comment: comment

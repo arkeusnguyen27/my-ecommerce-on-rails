@@ -87,7 +87,23 @@ script
     function comment_form_btn(comment_id){
       if(document.querySelector(`.comment-edit-form[comment-form-id="${comment_id}"]`).style.display == "none"){
         document.querySelector(`.comment-edit-form[comment-form-id="${comment_id}"]`).style.display = "block";
+        document.querySelector(`.reply-submit-form[reply-form-id="${comment_id}"]`).style.display = "none";
       }else{
         document.querySelector(`.comment-edit-form[comment-form-id="${comment_id}"]`).style.display = "none";
+      }
+    };
+    function reply_form_btn(comment_id){
+      if(document.querySelector(`.reply-submit-form[reply-form-id="${comment_id}"]`).style.display == "none"){
+        document.querySelector(`.reply-submit-form[reply-form-id="${comment_id}"]`).style.display = "block";
+        document.querySelector(`.comment-edit-form[comment-form-id="${comment_id}"]`).style.display = "none";
+      }else{
+        document.querySelector(`.reply-submit-form[reply-form-id="${comment_id}"]`).style.display = "none";
+      }
+    };
+    function reply_comment_form_btn(comment_id){
+      if(document.querySelector(`.reply-comment-submit-form[reply-comment-form-id="${comment_id}"]`).style.display == "none"){
+        document.querySelector(`.reply-comment-submit-form[reply-comment-form-id="${comment_id}"]`).style.display = "block";
+      }else{
+        document.querySelector(`.reply-comment-submit-form[reply-comment-form-id="${comment_id}"]`).style.display = "none";
       }
     };

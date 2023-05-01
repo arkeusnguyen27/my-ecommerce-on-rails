@@ -1,0 +1,16 @@
+.card
+  .card-header[style="display: flex; justify-content: space-between;"]
+    span.reviewer-name 
+      = reply.user.name
+    span.review-date[data-content = reply.created_at]
+      = reply.updated_at.strftime("%d-%m-%Y")
+  .card-body
+    = reply.content
+    - if reply.user == current_user
+      div.edit-form-container
+        div.button-container[style="text-align: right;"]
+          button.btn.btn-warning[onclick="reply_comment_form_btn(#{reply.id})"]
+            i.fa.fa-edit
+              |edit
+      div.reply-comment-submit-form[reply-comment-form-id="#{reply.id}" style="display:none;"]
+        = render "replies/form", comment: comment

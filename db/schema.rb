@@ -129,10 +129,10 @@ ActiveRecord::Schema.define(version: 2023_04_26_085947) do
   create_table "replies", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id"
-    t.bigint "blog_id"
+    t.bigint "comment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["blog_id"], name: "index_replies_on_blog_id"
+    t.index ["comment_id"], name: "index_replies_on_comment_id"
     t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
