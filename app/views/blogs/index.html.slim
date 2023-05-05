@@ -1,11 +1,11 @@
 .banner_text
   h1 Read our awesome user's blog
-  div.btn.button-54[style="background:#A4C3B2;"]
-    = sort_link(@q, :created_at, "view", default_order: :asc)
-      | most recent
-  div.btn.button-54[style="background:#F6F740;"]
-    = sort_link(@q, :view_count, "view count", default_order: :desc)
-      | most viewed
+
+  = sort_link(@q, :created_at, "view", default_order: :asc)
+    | most recent
+
+  = sort_link(@q, :view_count, "view count", default_order: :desc)
+    | most viewed
     
 .list-of-blogs
   - @blogs.each do |blog|
@@ -14,7 +14,8 @@
 
 style
   |
-    .button-54 {
+    .sort_link {
+      text-decoration:none !important;
       font-family: "Open Sans", sans-serif;
       font-size: 16px;
       letter-spacing: 2px;
@@ -31,14 +32,20 @@ style
       touch-action: manipulation;
     }
 
-    .button-54:active {
+    .sort_link:active {
       box-shadow: 0px 0px 0px 0px;
       top: 5px;
       left: 5px;
     }
 
     @media (min-width: 768px) {
-      .button-54 {
+      .sort_link {
         padding: 0.25em 0.75em;
       }
+    }
+    .sort_link:nth-child(odd){
+      background:#F6F740;
+    }
+    .sort_link:nth-child(even){
+      background:#A4C3B2;
     }

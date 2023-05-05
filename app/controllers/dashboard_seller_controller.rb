@@ -23,6 +23,6 @@ class DashboardSellerController < DashboardController
   end
 
   def product_params
-    params.require(:product).permit(:title, :description, :cover)
+    params.require(:product).permit(:title, :description, :cover, :price)
   end
 end
