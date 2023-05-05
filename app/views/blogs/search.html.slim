@@ -1,0 +1,60 @@
+hr
+div.container
+  div.search
+    .search-input
+      = search_form_for @q, url: blogs_search_path do |f|
+        = f.search_field :title_cont, class:"search-1", placeholder:"try something"
+        = f.submit class:"button-1"
+  
+.cards
+  - @blogs.each do |blog|
+      = render 'blogs/partials/blog_card_small', blog: blog
+
+style
+  |.trix-content {
+    max-height: 250px;
+    white-space: pre-line;
+    overflow: hidden;
+    }
+    .search {
+    background-color: #fff;
+    padding: 4px;
+    border-radius: 5px
+    }
+    .search-1 {
+        position: relative;
+        width: 100%
+    }
+    .search-1 {
+        height: 45px;
+        border: none;
+        width: 100%;
+        border-right: 2px solid #eee
+    }
+    .search-1:focus {
+        border-color: none;
+        box-shadow: none;
+        outline: none
+    }
+    .search-1 i {
+        position: absolute;
+        top: 12px;
+        left: 5px;
+        font-size: 24px;
+        color: #eee
+    }
+    body {
+    background-image: linear-gradient(to right top,#D91B23,#124FEB);
+    height: 100vh;
+    }
+    .button-1{
+      border: none;
+      height: 45px;
+      background-color: red;
+      color: #fff;
+      width: 90px;
+      border-radius: 4px;
+    }
+    form#blog_search {
+    display: flex;
+    }

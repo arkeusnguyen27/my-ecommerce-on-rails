@@ -60,6 +60,11 @@ class BlogsController < ApplicationController
       
     end
 
+    def search
+      @q = Blog.ransack(params[:q])
+      @blogs = @q.result(distinct: true)
+    end
+    
     private
     def blog_params
       params.require(:blog).permit(:title, :content)

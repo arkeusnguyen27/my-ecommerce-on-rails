@@ -1,9 +1,9 @@
 .banner_text
   h1 Read our awesome user's blog
-  button.btn.button-54[style="background:#A4C3B2;"]
+  div.btn.button-54[style="background:#A4C3B2;"]
     = sort_link(@q, :created_at, "view", default_order: :asc)
       | most recent
-  button.btn.button-54[style="background:#F6F740;"]
+  div.btn.button-54[style="background:#F6F740;"]
     = sort_link(@q, :view_count, "view count", default_order: :desc)
       | most viewed
     

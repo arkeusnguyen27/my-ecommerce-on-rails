@@ -14,9 +14,15 @@
       <li class="nav-item">
         <%= link_to "All Shops", shops_path, class:"nav-link" %>
       </li>
-      <li class="nav-item">
-        <%= link_to "Blogs", blogs_path, class:"nav-link" %>
-      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+           Blogs
+        </a>
+        <div class="dropdown-menu">
+        <%= link_to "All blogs", blogs_path, class:"dropdown-item" %>
+          <div class="dropdown-divider"></div>
+        <%= link_to "Search for a blog", blogs_search_path, class:"dropdown-item" %>
+        </li>
       <li class="nav-item ">
       <% if current_user.present? %>
       <%= link_to "Dashboard", dashboard_index_path, class:"nav-link" %> 

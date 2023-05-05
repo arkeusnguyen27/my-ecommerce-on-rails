@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "/apps", to: "home#apps"
   get "/pricing", to: "home#pricing"
   get "/search", to: "home#search"
+  get "blogs/search", to: "blogs#search"
 
   resources :line_items, only: [:create, :update, :destroy]
 
