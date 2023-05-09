@@ -3,6 +3,7 @@ class Blog < ApplicationRecord
    has_rich_text :content
    validates :content, presence: true
    has_many :comments
+   has_many :votes
 
    def get_user_name
       return user.name
@@ -14,6 +15,14 @@ class Blog < ApplicationRecord
 
    def get_number_of_all_comments
       comments.count
+   end
+
+   def get_number_of_all_like_votes
+      votes.where(react: 'like').count
+   end
+
+   def get_number_of_all_dislike_votes
+      votes.where(react: 'dislike').count
    end
 
    def self.ransackable_attributes(auth_object = nil)
