@@ -1,0 +1,10 @@
+.blog-user-info-container[style="display: flex; margin-top: auto;border: 1px solid #38A3A5; padding:5px;background: #FAF9F9;border-radius: 3px;"]
+  img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" style="border-radius: 50%; width: 40px; height: 40px; margin-right: 10px;"
+  .blog-user-info-small
+    .blog-user-name[style="text-align: left;"]
+      span = user.name
+    .blog-user-vote-count
+      i.fa.fa-thumbs-up[style="margin-right: 10px; color:#59C9A5;"]
+        => user.get_number_of_all_like_votes
+      i.fa.fa-thumbs-down[style="color:#D81E5B;"]
+        => user.get_number_of_all_dislike_votes

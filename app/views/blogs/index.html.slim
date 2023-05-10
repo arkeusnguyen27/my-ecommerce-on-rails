@@ -9,7 +9,7 @@
     
 .list-of-blogs
   - @blogs.each do |blog|
-    = render "blogs/partials/blog_card", { blog: blog }
+    = render "blogs/partials/blog_card",  blog: blog , user: blog.get_user
 
 
 style

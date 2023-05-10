@@ -1,7 +1,6 @@
 .card
   .card-header[style="display: flex; justify-content: space-between;"]
-    span.reviewer-name 
-      = reply.user.name
+    = render "users/partials/small_user_info", user: user
     span.review-date[data-content = reply.created_at]
       = reply.updated_at.strftime("%d-%m-%Y")
   .card-body

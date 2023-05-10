@@ -19,4 +19,8 @@ class Review < ApplicationRecord
     Product.decrement_counter(:reviews_count, line_item.product.id)
   end
 
+  def get_user
+    return user
+ end
+ 
 end

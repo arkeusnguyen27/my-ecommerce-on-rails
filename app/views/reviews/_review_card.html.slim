@@ -1,4 +1,4 @@
-.card
+.review-card[style="position: relative; display: flex; min-width: 0; word-wrap: break-word; background-color: #fff; background-clip: border-box; border: 1px solid rgba(0,0,0,.125); border-radius: 0.25rem;"]
   .card-header
     .review-rating-star
       - review.rating.times do
@@ -7,8 +7,7 @@
         span.fa-regular.fa-star
       span.review-date[data-content = review.created_at]
         = review.created_at.strftime("%d-%m-%Y")
-    span.reviewer-name 
-      == review.user.name
+    = render "users/partials/small_user_info", user: user
   .card-body
     b.review-title
       = review.title

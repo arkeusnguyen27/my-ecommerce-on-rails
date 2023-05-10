@@ -8,4 +8,8 @@ class Reply < ApplicationRecord
   def get_user_name
     return user.name
   end
+
+  def get_user
+    return user
+  end
 end

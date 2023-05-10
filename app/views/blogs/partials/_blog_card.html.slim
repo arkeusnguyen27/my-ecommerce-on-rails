@@ -11,9 +11,7 @@
             = blog.created_at.strftime("%d-%m-%Y")
         .blog-card__info
           span[style="display: flex; justify-content: space-between;"]
-            a.icon-link.mr-3
-              i.fa.fa-pencil-square-o
-                = blog.get_user_name
+            = render "users/partials/small_user_info", blog: blog, user: user
             span 
               i.fa.fa-eye
                 =< blog.view_count

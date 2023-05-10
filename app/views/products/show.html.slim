@@ -60,7 +60,7 @@
   .reviews-container
     h2 Discover what people feel for this product
     - @product.completed_reviews.each do |review|
-      = render "reviews/review_card", review: review
+      = render "reviews/review_card", review: review, user: review.get_user
 
 
 script

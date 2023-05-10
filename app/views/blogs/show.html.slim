@@ -4,8 +4,8 @@
 .container[blog-id="#{@blog.id}"]
   .title-container
     .author-and-date
-      p == @blog.get_user_name
-      p == @blog.created_at.strftime("%d-%m-%Y")
+      = render "users/partials/small_user_info", user: @blog.get_user
+      p = @blog.created_at.strftime("%d-%m-%Y")
     h1 == @blog.title
     .social-icon-container
       img.social-icon src="https://assets.website-files.com/5e95a087e75195080e304ab1/5eac081a7128cf4a5e8a5d28_social-media%20(2).svg"
@@ -14,22 +14,20 @@
   .banner-container
   .blog-content-container
     = @blog.content
-h1
-  |Likes:
-  = @blog.get_number_of_all_like_votes
-h1
-  |Disikes:
-  = @blog.get_number_of_all_dislike_votes
-br
-- if current_user.present?
-  .votes-container
-    .votes-like-container
+#votes-container
+  h5
+    |Likes:
+    =< @blog.get_number_of_all_like_votes
+    - if current_user.present?
       button.bubbly-button#like-btn
         i.fa.fa-thumbs-up
-    .votes-dislike-container
+  h5
+    |Disikes:
+    =< @blog.get_number_of_all_dislike_votes
+    - if current_user.present?
       button.bubbly-button#dislike-btn
         i.fa.fa-thumbs-down
-
+br
 .reviews-container
     - if current_user.present?
       h2 Leave a comment for this blog
@@ -95,6 +93,7 @@ style
         color: #fff;
         border-radius: 4px;
         border: none;
+        margin-left: 10px;
         cursor: pointer;
         position: relative;
         transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
@@ -163,10 +162,11 @@ style
           background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
         }
       }
-      .votes-container {
+      #votes-container {
           display: flex;
-          justify-content: space-evenly;
+          justify-content: space-around;
       }
+      
 
 
 script
@@ -239,6 +239,7 @@ script
           },
           body: JsonData
         })
+        setTimeout(function() {location.reload()}, 200);
       })
       document.querySelector('#dislike-btn').addEventListener('click', function(){
         let vote_data = {
@@ -253,4 +254,6 @@ script
           },
           body: JsonData
         })
+        setTimeout(function() {location.reload()}, 200);
+
       })

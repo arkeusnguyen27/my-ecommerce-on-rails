@@ -9,6 +9,10 @@ class Blog < ApplicationRecord
       return user.name
    end
 
+   def get_user
+      return user
+   end
+
    def get_all_comments
       comments
    end

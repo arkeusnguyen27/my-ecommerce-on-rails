@@ -13,5 +13,9 @@ class Comment < ApplicationRecord
   def get_all_replies
     replies
   end
-  
+
+  def get_user
+    return user
+  end
+
 end

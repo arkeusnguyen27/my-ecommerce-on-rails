@@ -1,7 +1,6 @@
 .card
   .card-header[style="display: flex; justify-content: space-between;"]
-    span.reviewer-name 
-      = comment.user.name
+    = render "users/partials/small_user_info", user: comment.get_user
     span.review-date[data-content = comment.created_at]
       = comment.updated_at.strftime("%d-%m-%Y")
   .card-body
@@ -25,4 +24,4 @@
   - if comment.get_all_replies.count > 0
     .card-footer[style="border-left: 5px solid black;padding-left: 30px;"]
       - comment.get_all_replies.each do |reply|
-        = render "replies/reply_card", reply: reply, comment: comment
+        = render "replies/reply_card", reply: reply, comment: comment, user: reply.get_user
