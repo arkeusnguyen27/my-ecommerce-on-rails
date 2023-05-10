@@ -11,9 +11,10 @@
             button.btn.btn-warning[onclick="comment_form_btn(#{comment.id})"]
               i.fa.fa-edit
                 |edit
-          button.btn.btn-dark[onclick="reply_form_btn(#{comment.id})"]
-            i.fa.fa-reply
-              |reply
+          - if current_user.present?     
+            button.btn.btn-dark[onclick="reply_form_btn(#{comment.id})"]
+              i.fa.fa-reply
+                |reply
       div.form-container
         - if comment.user == current_user
           div.comment-edit-form[comment-form-id="#{comment.id}" style="display:none;"]
