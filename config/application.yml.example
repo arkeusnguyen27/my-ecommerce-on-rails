@@ -1,0 +1,10 @@
+DB_USER = ''
+DEV_DB_NAME = ''
+TEST_DB_NAME = ''
+PRODUCTION_DB_NAME = ''
+
+#when you re-start this whole project, remember to run "createdb" to connect to postgres and "rake db:create" to create the database
+#when you see the error "Rails: Webpacker::Manifest::MissingEntryError", fix this by:
+delete the nodejs "sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}"
+reinstall the nodejs by nvm
+run "rails assets:precompile"
